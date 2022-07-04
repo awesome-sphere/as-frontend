@@ -10,9 +10,9 @@
 .div-content{
     padding: 10px;
     display: flex;
-    justify-content: left;
+    min-height: 50vh;
+    justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 /*
@@ -91,6 +91,10 @@ upper side
 
 .isometric-menu:hover::after{
     background: #FFA000;
+}
+
+.isometric-menu:last-child::after{
+    box-shadow: -110px 110px 20px 10px rgba(0,0,0,0.15);
 }
 /*
 -----------------------------------------

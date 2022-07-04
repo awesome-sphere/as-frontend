@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar v-if="!$route.meta.hideAppBar" app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+// import $route from "eslint-plugin-vue/lib/rules/max-len";
+
 export default {
   name: "App",
 

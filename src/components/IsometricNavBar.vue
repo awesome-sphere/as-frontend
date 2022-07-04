@@ -1,5 +1,5 @@
 <template>
-  <v-container class="div-content">
+  <div class="div-content">
     <ul class="isometric-template">
       <li style="--z-index: 4" class="isometric-menu">
         <router-link style="color: #e0e0e0" to="/about" class="title-nav"
@@ -22,7 +22,7 @@
         >
       </li>
     </ul>
-  </v-container>
+  </div>
 </template>
 
 <script>
