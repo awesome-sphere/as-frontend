@@ -1,17 +1,15 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <IsometricNavBar></IsometricNavBar>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import IsometricNavBar from "@/components/IsometricNavBar";
 
 export default {
   name: "Home",
+
   components: {
-    HelloWorld,
+    IsometricNavBar,
   },
 };
 </script>

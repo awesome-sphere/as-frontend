@@ -1,0 +1,117 @@
+@import url('https://fonts.gooleapis.com/css?family=Oswald:400,700');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+.div-content{
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/*
+
+front side (3D box layout)
+-----------------------------------------
+
+*/
+.isometric-template {
+    position: relative;
+    margin: 0 20px 0 20px;
+    transform: skewY(-15deg);
+}
+
+.isometric-menu {
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+    position: relative;
+    list-style: none;
+    min-width: 200px;
+    background: #616161;
+    padding: 17px;
+    z-index: var(--z-index);
+    transition: 0.5s;
+}
+
+.isometric-menu:hover{
+    background: #FFA000;
+    transform: translateX(20%);
+    transition: 0.5s;
+}
+/*
+-----------------------------------------
+*/
+
+/*
+left side
+-----------------------------------------
+*/
+.isometric-menu::before{
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20%;
+    min-width: 40px;
+    height: 100%;
+    background: #616161;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.5s;
+}
+
+.isometric-menu:hover::before{
+    background: #FFA000;
+}
+/*
+-----------------------------------------
+*/
+
+/*
+upper side
+-----------------------------------------
+*/
+.isometric-menu::after{
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+    content: '';
+    position: absolute;
+    top: -69%;
+    left: -10%;
+    width: 100%;
+    min-height: 40px;
+    background: #616161;
+    transform-origin: right;
+    transform: skewX(45deg);
+    transition: 0.5s;
+}
+
+.isometric-menu:hover::after{
+    background: #FFA000;
+}
+/*
+-----------------------------------------
+*/
+
+/*
+each layer content
+*/
+.title-nav{
+    margin: 0;
+    color: #E0E0E0;
+    display: block;
+    letter-spacing: 0.05em;
+}
+
+.title-nav:hover{
+    color: white;
+    cursor: pointer;
+}
+
