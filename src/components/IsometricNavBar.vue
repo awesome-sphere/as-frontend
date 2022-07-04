@@ -2,16 +2,24 @@
   <v-container class="div-content">
     <ul class="isometric-template">
       <li style="--z-index: 4" class="isometric-menu">
-        <span class="title-nav">Home</span>
+        <router-link style="color: #e0e0e0" to="/about" class="title-nav"
+          >Home</router-link
+        >
       </li>
       <li style="--z-index: 3" class="isometric-menu">
-        <span class="title-nav">About</span>
+        <router-link style="color: #e0e0e0" to="/about" class="title-nav"
+          >About</router-link
+        >
       </li>
       <li style="--z-index: 2" class="isometric-menu">
-        <span class="title-nav">Movies</span>
+        <router-link style="color: #e0e0e0" to="/about" class="title-nav"
+          >Movies</router-link
+        >
       </li>
       <li style="--z-index: 1" class="isometric-menu">
-        <span class="title-nav">Theater</span>
+        <router-link style="color: #e0e0e0" to="/about" class="title-nav"
+          >Theater</router-link
+        >
       </li>
     </ul>
   </v-container>

@@ -104,6 +104,7 @@ each layer content
     color: #E0E0E0;
     display: block;
     letter-spacing: 0.05em;
+    text-decoration: none;
 }
 
 .title-nav:hover{
