@@ -12,9 +12,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    meta: {
-      hideAppBar: true,
-    },
   },
   {
     path: "/booking",

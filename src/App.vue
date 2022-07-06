@@ -1,11 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      v-if="!$route.meta.hideAppBar"
-      app
-      color="#0f3742"
-      elevate-on-scroll
-    >
+    <v-app-bar app color="#0f3742" elevate-on-scroll>
       <div class="d-flex align-center ml-2">
         <v-btn plain to="/" icon fab>
           <v-img
@@ -61,11 +56,20 @@
           </v-card-actions>
         </v-card>
       </v-menu>
+      <v-switch
+        v-model="enableBackground"
+        color="#FFD54F"
+        hide-details
+      ></v-switch>
     </v-app-bar>
-
-    <v-main>
-      <router-view />
-    </v-main>
+    <div class="background-page">
+      <v-main>
+        <router-view />
+      </v-main>
+      <div v-if="enableBackground">
+        <em v-for="n in 10" v-bind:key="n"></em>
+      </div>
+    </div>
   </v-app>
 </template>
 
@@ -76,7 +80,7 @@ export default {
   name: "App",
 
   data: () => ({
-    //
+    enableBackground: true,
   }),
 };
 </script>
