@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Movies from "../views/Movies";
+import Booking from "@/views/Booking";
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,11 @@ const routes = [
     meta: {
       hideAppBar: true,
     },
+  },
+  {
+    path: "/booking",
+    name: "Booking",
+    component: Booking,
   },
   {
     path: "/about",

@@ -5,7 +5,7 @@ module.exports = {
     port: 5555,
     https: false,
     proxy: {
-      "/api": {
+      "/seating": {
         target: "http://127.0.0.1:9000",
       },
       "/movie": {
