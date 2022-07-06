@@ -7,7 +7,7 @@
         class="d-flex child-flex"
         cols="4"
       >
-        <v-card>
+        <v-card @click="$router.push('/movie/' + mov.id)">
           <v-img
             :src="mov.poster"
             :aspect-ratio="12 / 16"
@@ -63,7 +63,6 @@ export default {
       this.movieLoading = true;
       let result = await Vue.axios.get("/movie/get-all-movies");
       this.movies = result.data.movies;
-      console.log(this.movies);
       this.movieLoading = false;
     },
   },

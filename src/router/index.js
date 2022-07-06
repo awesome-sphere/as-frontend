@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Movies from "../views/Movies";
 import Booking from "@/views/Booking";
+import AllMovies from "../views/AllMovies";
+import Movie from "../views/Movie";
 
 Vue.use(VueRouter);
 
@@ -31,8 +32,13 @@ const routes = [
   },
   {
     path: "/all-movies",
-    name: "Movies",
-    component: Movies,
+    name: "AllMovies",
+    component: AllMovies,
+  },
+  {
+    path: "/movie/:id",
+    name: "Movie",
+    component: Movie,
   },
 ];
 
