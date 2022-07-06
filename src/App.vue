@@ -35,31 +35,12 @@
             </v-avatar>
           </v-btn>
         </template>
-        <v-card class="mx-auto" max-width="344" outlined>
-          <v-list-item three-line>
-            <v-list-item-content>
-              <div class="text-overline mb-4">Profile</div>
-              <v-list-item-title class="text-h5 mb-1">
-                PKinwza007
-              </v-list-item-title>
-              <v-list-item-subtitle
-                >Greyhound divisely hello coldly
-                fonwderfully</v-list-item-subtitle
-              >
-            </v-list-item-content>
-
-            <v-list-item-avatar tile size="65">
-              <v-avatar color="red" size="65">
-                <span class="white--text text-h5">P</span>
-              </v-avatar>
-            </v-list-item-avatar>
-          </v-list-item>
-
-          <v-card-actions>
-            <v-btn plain rounded color="#FFAB00"> View Profile </v-btn>
-            <v-btn plain rounded color="#FFAB00"> History </v-btn>
-          </v-card-actions>
-        </v-card>
+        <profile-card
+          :email="this.email"
+          :username="this.username"
+          :is-logged-in="this.isLoggedIn"
+          @set-info="setInfo"
+        ></profile-card>
       </v-menu>
     </v-app-bar>
 
@@ -70,14 +51,30 @@
 </template>
 
 <script>
+import store from "@/store";
+import ProfileCard from "@/components/ProfileCard";
 // import $route from "eslint-plugin-vue/lib/rules/max-len";
 
 export default {
   name: "App",
-
+  components: { ProfileCard },
   data: () => ({
-    //
+    username: "Guest",
+    isLoggedIn: false,
+    email: "Not Yet Logged In",
   }),
+  methods: {
+    setInfo() {
+      this.username = store.state.username || "Guest";
+      this.isLoggedIn = store.state.isLoggedIn;
+      this.email = store.state.email || "Not Yet Logged In";
+    },
+  },
+  created() {
+    console.log("1", this.isLoggedIn);
+    this.setInfo();
+    console.log("2", this.isLoggedIn);
+  },
 };
 </script>
 
