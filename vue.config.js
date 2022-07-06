@@ -8,6 +8,9 @@ module.exports = {
       "/api": {
         target: "http://127.0.0.1:9000",
       },
+      "/movie": {
+        target: "http://127.0.0.1:9002",
+      },
     },
     headers: {
       "Access-Control-Allow-Origin": "*",

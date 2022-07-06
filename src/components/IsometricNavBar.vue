@@ -12,7 +12,7 @@
         >
       </li>
       <li style="--z-index: 2" class="isometric-menu">
-        <router-link style="color: #e0e0e0" to="/about" class="title-nav"
+        <router-link style="color: #e0e0e0" to="/all-movies" class="title-nav"
           >Movies</router-link
         >
       </li>
