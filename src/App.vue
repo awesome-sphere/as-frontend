@@ -19,8 +19,8 @@
       <v-spacer></v-spacer>
 
       <v-tabs color="#FFD54F" dark right>
-        <v-tab>Movies</v-tab>
-        <v-tab>About</v-tab>
+        <v-tab to="/all-movies">Movies</v-tab>
+        <v-tab to="/about">About</v-tab>
       </v-tabs>
       <v-menu bottom min-width="200px" open-on-hover offset-y right offset-x>
         <template v-slot:activator="{ on }">

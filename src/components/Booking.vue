@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="7">
-        <v-card elevation="0" outlined min-height="700" class="pa-10">
+        <v-card elevation="0" min-height="700" class="pa-10">
           <v-img :src="require('../assets/screen.png')" max-width="400"></v-img>
           <v-row class="justify-center">
             <v-col v-for="seat in seats" v-bind:key="seat.id" cols="1">
