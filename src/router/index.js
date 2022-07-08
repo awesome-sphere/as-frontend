@@ -1,9 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
-import Booking from "@/views/Booking";
+// import Booking from "@/views/Booking";
 import AllMovies from "@/views/AllMovies";
 import Movie from "@/views/Movie";
+import MovieInfo from "@/views/MovieInfo";
 import Login from "@/views/Login";
 
 Vue.use(VueRouter);
@@ -13,11 +14,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-  },
-  {
-    path: "/booking",
-    name: "Booking",
-    component: Booking,
   },
   {
     path: "/about",
@@ -34,8 +30,13 @@ const routes = [
     component: AllMovies,
   },
   {
-    path: "/movie/:id",
-    name: "Movie",
+    path: "/movie-info/:id",
+    name: "MovieInfo",
+    component: MovieInfo,
+  },
+  {
+    path: "/book-movie/",
+    name: "MovieInfo",
     component: Movie,
   },
   {
