@@ -63,3 +63,21 @@
     font-weight: 800;
     color: #ffd676;
 }
+
+.number-label{
+    position: absolute;
+    left: 6%;
+}
+
+.number-label span{
+    color: #0f3742;
+    font-size: 7em;
+    font-weight: 900;
+    position: absolute;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #ffd676;
+    text-shadow:
+            4px 4px #0f3742,
+            10px 10px #000000;
+}
