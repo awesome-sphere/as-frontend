@@ -1,69 +1,32 @@
 <template>
-  <v-container class="my-5 mx-auto" max-width="300">
-    <v-card class="mx-auto" outlined max-width="800">
-      <div class="d-flex flex-no-wrap">
-        <v-img
-          :src="movie.poster"
-          :aspect-ratio="12 / 16"
-          max-width="200"
-          class="grey lighten-2"
-        ></v-img>
-        <div>
-          <v-card-title v-text="movie.title"></v-card-title>
-          <v-card-subtitle>{{ movie.duration }} m</v-card-subtitle>
-          <v-card-subtitle v-text="movie.description"></v-card-subtitle>
-        </div>
-      </div>
-    </v-card>
-
-    <v-card class="mx-auto mt-10" outlined max-width="500">
-      <v-card-title>Trailer</v-card-title>
-      <video
-        :src="movie.trailer"
-        width="100%"
-        class="mx-auto grey lighten-2"
-        controls
-      ></video>
-    </v-card>
-
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-show="movieLoading"
-        :size="70"
-        :width="7"
-        color="teal"
-        indeterminate
-        class="my-16"
-      ></v-progress-circular>
-    </v-row>
+  <v-container>
+    <div class="mb-10">
+      <v-stepper :value="e1" class="mt-12">
+        <v-stepper-header>
+          <v-stepper-step step="1"> Select Time Slot </v-stepper-step>
+          <v-divider></v-divider>
+          <v-stepper-step step="2"> Select Seat </v-stepper-step>
+          <v-divider></v-divider>
+          <v-stepper-step step="3"> Payment </v-stepper-step>
+        </v-stepper-header>
+      </v-stepper>
+    </div>
+    <Booking v-if="e1 === 2"></Booking>
   </v-container>
 </template>
 
 <script>
-import Vue from "vue";
-
+import Booking from "@/components/Booking";
 export default {
-  data: () => ({
-    movieLoading: true,
-    movie: null,
-  }),
-
-  created() {
-    this.getMovieDetail();
-  },
-
-  methods: {
-    async getMovieDetail() {
-      this.movieLoading = true;
-      let result = await Vue.axios.get(
-        "/movie/get-movie/" + this.$route.params.id
-      );
-      this.movie = result.data.movie;
-      console.log(this.movie);
-      this.movieLoading = false;
-    },
+  name: "Movie",
+  components: {Booking},
+  data() {
+    return {
+      e1: 2,
+      // steps: 2,
+    };
   },
 };
 </script>
 
-<style></style>
+<style src="../css/Movie.css"></style>

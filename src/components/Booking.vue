@@ -2,10 +2,21 @@
   <v-container>
     <p>This is booking page</p>
     <v-row>
-      <v-col v-for="seat in seats" v-bind:key="seat.id" cols="1">
-        <v-btn plain icon :disabled="disableButton(seat.status)">
-          <v-icon :color="getSeatColor(seat.status)">mdi-sofa-single</v-icon>
-        </v-btn>
+      <v-col>
+        <v-card elevation="0" outlined min-height="700" class="pa-5">
+          <v-row>
+            <v-col v-for="seat in seats" v-bind:key="seat.id" cols="1">
+              <v-btn plain icon :disabled="disableButton(seat.status)">
+                <v-icon :color="getSeatColor(seat.status)"
+                  >mdi-sofa-single</v-icon
+                >
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
+      <v-col>
+        <v-card elevation="0" outlined min-height="700"> </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -34,7 +45,7 @@ export default {
         time_slot_id: 2,
       });
       this.seats = result.data.seats_info;
-      // console.log(this.seats);
+      console.log(this.seats);
     },
 
     getSeatColor(status) {
