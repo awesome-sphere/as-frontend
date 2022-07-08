@@ -10,7 +10,6 @@ export default new Vuex.Store({
       commit("setIsLoggedIn", true);
       commit("setIsAdmin", user.isAdmin);
       commit("setWebToken", user.token);
-      commit("setUserId", user.userId);
       commit("setEmail", user.email);
     },
     logout({ commit }) {
@@ -18,7 +17,6 @@ export default new Vuex.Store({
       commit("setIsLoggedIn", false);
       commit("setIsAdmin", false);
       commit("setWebToken", "");
-      commit("setUserId", "");
       commit("setEmail", "");
     },
   },
@@ -32,9 +30,6 @@ export default new Vuex.Store({
     setWebToken(state, webToken) {
       state.webToken = webToken;
     },
-    setUserId(state, userId) {
-      state.userId = userId;
-    },
     setIsAdmin(state, isAdmin) {
       state.isAdmin = isAdmin;
     },
@@ -46,7 +41,6 @@ export default new Vuex.Store({
     username: "",
     isLoggedIn: false,
     webToken: "",
-    userId: -1,
     isAdmin: false,
     email: "",
   },
