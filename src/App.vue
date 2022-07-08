@@ -34,7 +34,6 @@
           :email="this.email"
           :username="this.username"
           :is-logged-in="this.isLoggedIn"
-          @set-info="setInfo"
         ></profile-card>
       </v-menu>
       <v-switch
@@ -63,22 +62,18 @@ export default {
   name: "App",
   components: { ProfileCard },
   data: () => ({
-    username: "Guest",
-    isLoggedIn: false,
-    email: "Not Yet Logged In",
     enableBackground: true,
   }),
-  methods: {
-    setInfo() {
-      this.username = store.state.username || "Guest";
-      this.isLoggedIn = store.state.isLoggedIn;
-      this.email = store.state.email || "Not Yet Logged In";
+  computed: {
+    username() {
+      return store.state.username || "Guest";
     },
-  },
-  created() {
-    console.log("1", this.isLoggedIn);
-    this.setInfo();
-    console.log("2", this.isLoggedIn);
+    isLoggedIn() {
+      return store.state.isLoggedIn || false;
+    },
+    email() {
+      return store.state.email || "Not Yet Logged In";
+    },
   },
 };
 </script>

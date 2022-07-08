@@ -11,6 +11,9 @@ module.exports = {
       "/movie": {
         target: "http://127.0.0.1:9002",
       },
+      "/authen": {
+        target: "http://127.0.0.1:9001",
+      },
     },
     headers: {
       "Access-Control-Allow-Origin": "*",

@@ -8,7 +8,7 @@ export default new Vuex.Store({
     login({ commit }, user) {
       commit("setUsername", user.username);
       commit("setIsLoggedIn", true);
-      commit("setIsAdmin", user.isAdmin);
+      commit("setIsAdmin", user["is_admin"]);
       commit("setWebToken", user.token);
       commit("setEmail", user.email);
     },

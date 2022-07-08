@@ -23,7 +23,7 @@
       <v-btn plain rounded color="#FFAB00" @click="dummyLogout"> Logout </v-btn>
     </v-card-actions>
     <v-card-actions v-else>
-      <v-btn plain rounded color="#FFAB00" @click="dummyLogin"> Login </v-btn>
+      <v-btn plain rounded color="#FFAB00" @click="login"> Login </v-btn>
       <v-btn plain rounded color="#FFAB00"> Sign Up </v-btn>
     </v-card-actions>
   </v-card>
@@ -36,21 +36,12 @@ export default {
   name: "ProfileCard",
   props: ["username", "email", "isLoggedIn"],
   methods: {
-    // FIXME: This is a dummy login function.
-    async dummyLogin() {
-      await store.dispatch("login", {
-        username: "username",
-        email: "email@gmail.com",
-        userId: 1,
-        token: "token",
-        isAdmin: false,
-      });
-      this.$emit("set-info");
+    async login() {
+      await this.$router.push("/login");
     },
     // FIXME: This is a dummy logout function.
     async dummyLogout() {
       await store.dispatch("logout");
-      this.$emit("set-info");
     },
   },
 };
