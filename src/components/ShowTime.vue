@@ -3,7 +3,7 @@
         <v-card
         flat
         tile
-        width="65%"
+        width="100%"
         class="mx-auto justify-center text-center"
         color="#8a9a9f"
         >
@@ -11,7 +11,7 @@
                 <strong>AS Cinema</strong>
             </v-card-text>
         </v-card>
-        <v-card border-variant="dark" class="mx-auto justify-center" width="65%" color="transparent">
+        <v-card border-variant="dark" class="mx-auto justify-center" width="100%" color="transparent">
         <v-chip-group
             v-model="selection"
             active-class="yellow lighten-2 black--text"
@@ -19,7 +19,7 @@
         >
         <v-list-item six-line>
             <v-col
-            md="2">
+            md="4">
                 <v-card-title>
                 Theatre 1   
                 </v-card-title>
@@ -41,15 +41,15 @@
             >
                 <v-row class="mx-auto"
                 >
-                    <v-chip class="mx-5" large width="120px">10:30 AM</v-chip>
+                    <v-chip class="mx-5">10:30 AM</v-chip>
 
-                    <v-chip class="mx-3" large>1:00 PM</v-chip>
+                    <v-chip class="mx-3">1:00 PM</v-chip>
 
-                    <v-chip class="mx-3" large>3:30 PM</v-chip>
+                    <v-chip class="mx-3">3:30 PM</v-chip>
 
-                    <v-chip class="mx-3" large>6:00 PM</v-chip>
+                    <v-chip class="mx-3">6:00 PM</v-chip>
 
-                    <v-chip class="mx-3" large>8:30 PM</v-chip>
+                    <v-chip class="mx-3">8:30 PM</v-chip>
                 </v-row>
             </v-col>
         </v-list-item>
@@ -60,7 +60,7 @@
 
         <v-list-item three-line>
             <v-col
-            md="2">
+            md="4">
                 <v-card-title>
                 Theatre 2   
                 </v-card-title>
@@ -79,16 +79,16 @@
         <v-col 
         >
             <v-row class="mx-auto"
-            >
-                <v-chip class="mx-3" large>10:30 AM</v-chip>
+                >
+                    <v-chip class="mx-5">10:30 AM</v-chip>
 
-                <v-chip class="mx-3" large>1:00 PM</v-chip>
+                    <v-chip class="mx-3">1:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>3:30 PM</v-chip>
+                    <v-chip class="mx-3">3:30 PM</v-chip>
 
-                <v-chip class="mx-3" large>6:00 PM</v-chip>
+                    <v-chip class="mx-3">6:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>8:30 PM</v-chip>
+                    <v-chip class="mx-3">8:30 PM</v-chip>
             </v-row>
         </v-col>
         </v-list-item>
@@ -97,7 +97,7 @@
 
         <v-list-item three-line>
             <v-col
-            md="2">
+            md="4">
                 <v-card-title>
                 Theatre 3   
                 </v-card-title>
@@ -116,17 +116,16 @@
         <v-col 
         >
             <v-row class="mx-auto"
-            >
-                <v-chip class="mx-3" large>10:30 AM</v-chip>
+                >
+                    <v-chip class="mx-5">10:30 AM</v-chip>
 
-                <v-chip class="mx-3" large>1:00 PM</v-chip>
+                    <v-chip class="mx-3">1:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>3:30 PM</v-chip>
+                    <v-chip class="mx-3">3:30 PM</v-chip>
 
-                <v-chip class="mx-3" large>6:00 PM</v-chip>
+                    <v-chip class="mx-3">6:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>8:30 PM</v-chip>
-            
+                    <v-chip class="mx-3">8:30 PM</v-chip>
             </v-row>
         </v-col>
         </v-list-item>
@@ -135,7 +134,7 @@
 
        <v-list-item three-line>
             <v-col
-            md="2">
+            md="4">
                 <v-card-title>
                 Theatre 4   
                 </v-card-title>
@@ -154,17 +153,16 @@
         <v-col 
         >
             <v-row class="mx-auto"
-            >
-                <v-chip class="mx-3" large>10:30 AM</v-chip>
+                >
+                    <v-chip class="mx-5">10:30 AM</v-chip>
 
-                <v-chip class="mx-3" large>1:00 PM</v-chip>
+                    <v-chip class="mx-3">1:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>3:30 PM</v-chip>
+                    <v-chip class="mx-3">3:30 PM</v-chip>
 
-                <v-chip class="mx-3" large>6:00 PM</v-chip>
+                    <v-chip class="mx-3">6:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>8:30 PM</v-chip>
-            
+                    <v-chip class="mx-3">8:30 PM</v-chip>
             </v-row>
         </v-col>
         </v-list-item>
@@ -174,7 +172,7 @@
 
         <v-list-item three-line>
             <v-col
-            md="2">
+            md="4">
                 <v-card-title>
                 Theatre 5   
                 </v-card-title>
@@ -193,17 +191,16 @@
         <v-col 
         >
             <v-row class="mx-auto"
-            >
-                <v-chip class="mx-3" large>10:30 AM</v-chip>
+                >
+                    <v-chip class="mx-5">10:30 AM</v-chip>
 
-                <v-chip class="mx-3" large>1:00 PM</v-chip>
+                    <v-chip class="mx-3">1:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>3:30 PM</v-chip>
+                    <v-chip class="mx-3">3:30 PM</v-chip>
 
-                <v-chip class="mx-3" large>6:00 PM</v-chip>
+                    <v-chip class="mx-3">6:00 PM</v-chip>
 
-                <v-chip class="mx-3" large>8:30 PM</v-chip>
-            
+                    <v-chip class="mx-3">8:30 PM</v-chip>
             </v-row>
         </v-col>
         </v-list-item>
