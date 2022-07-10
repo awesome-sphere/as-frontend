@@ -12,8 +12,20 @@
           <v-card-title v-text="movie.title"></v-card-title>
           <v-card-subtitle>{{ movie.duration }} m</v-card-subtitle>
           <v-card-subtitle v-text="movie.description"></v-card-subtitle>
+          <v-spacer></v-spacer>
         </div>
       </div>
+      <v-card-actions class="pa-0">
+        <v-btn
+          absolute
+          bottom
+          right
+          text
+          color="#0f3742"
+          :to="{ name: 'Movie', params: { id: $route.params.id } }"
+          >Book Movie</v-btn
+        >
+      </v-card-actions>
     </v-card>
 
     <v-card class="mx-auto mt-10" outlined max-width="500">
@@ -59,7 +71,6 @@ export default {
         "/movie/get-movie/" + this.$route.params.id
       );
       this.movie = result.data.movie;
-      console.log(this.movie);
       this.movieLoading = false;
     },
   },
