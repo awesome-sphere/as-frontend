@@ -28,13 +28,13 @@ const routes = [
     component: AllMovies,
   },
   {
-    path: "/movie-info/:id",
+    path: "/movie/:id",
     name: "MovieInfo",
     component: MovieInfo,
   },
   {
     path: "/book-movie/",
-    name: "MovieInfo",
+    name: "Movie",
     component: Movie,
   },
 ];
