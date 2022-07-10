@@ -12,6 +12,7 @@
             </v-card-title>
         </v-card>
         <v-card border-variant="dark" class="mx-auto justify-center" width="100%" color="transparent">
+        <!-- TODO: adjust chips' position, styling, and set up language -->
         <v-chip-group
             v-model="selection"
             active-class="yellow lighten-2 black--text"
@@ -24,7 +25,6 @@
                     Theatre 1
                 </v-card-title>
                 <v-card-text>
-                    <!-- <p class="font-weight-black" sizes="24">Theatre 1</p>  -->
                     <v-icon
                     default
                     color="blue-grey darken-4"
@@ -229,13 +229,6 @@ export default {
       }
       
     },
-
-    async getRandomMov(theatre_id){
-        let data_name = `theatre${theatre_id}`
-        let random_data = data_name.at(0) 
-        console.log(random_data)
-        return (random_data.lang).then()
-    }
   },
 };
 </script>
