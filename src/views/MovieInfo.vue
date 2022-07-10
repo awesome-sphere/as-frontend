@@ -1,6 +1,6 @@
 <template>
-  <v-container class="my-5 mx-auto" max-width="300">
-    <v-card class="mx-auto" outlined max-width="800">
+  <v-container class="mx-auto" max-width="300">
+    <v-card class="mx-auto" outlined max-width="800" height="267">
       <div class="d-flex flex-no-wrap">
         <v-img
           :src="movie.poster"
@@ -8,27 +8,26 @@
           max-width="200"
           class="grey lighten-2"
         ></v-img>
-        <div>
+        <div style="max-width: 70%">
           <v-card-title v-text="movie.title"></v-card-title>
           <v-card-subtitle>{{ movie.duration }} m</v-card-subtitle>
           <v-card-subtitle v-text="movie.description"></v-card-subtitle>
-          <v-spacer></v-spacer>
+          <v-card-actions class="pa-0">
+            <v-btn
+              absolute
+              bottom
+              right
+              text
+              color="#0f3742"
+              :to="{ name: 'Movie', params: { id: $route.params.id } }"
+              >Book Movie</v-btn
+            >
+          </v-card-actions>
         </div>
       </div>
-      <v-card-actions class="pa-0">
-        <v-btn
-          absolute
-          bottom
-          right
-          text
-          color="#0f3742"
-          :to="{ name: 'Movie', params: { id: $route.params.id } }"
-          >Book Movie</v-btn
-        >
-      </v-card-actions>
     </v-card>
 
-    <v-card class="mx-auto mt-10" outlined max-width="500">
+    <v-card class="mx-auto mt-5" outlined max-width="500">
       <v-card-title>Trailer</v-card-title>
       <video
         :src="movie.trailer"
@@ -57,7 +56,7 @@ import Vue from "vue";
 export default {
   data: () => ({
     movieLoading: true,
-    movie: null,
+    movie: {},
   }),
 
   created() {
