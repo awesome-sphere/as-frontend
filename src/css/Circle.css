@@ -1,0 +1,84 @@
+.circle {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 50%;
+    position: relative;
+}
+
+.circle:before {
+    content: "";
+    position: absolute;
+    top: 1%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+    -webkit-filter: blur(5px);
+    z-index: 2;
+}
+
+.circle-pos {
+    position: relative;
+    transform: translate(-50%, -50%);
+}
+
+.circle-1-pos {
+    top: -110px;
+    left: 82%;
+}
+
+.circle-2-pos {
+    top: -120px;
+    left: 100%;
+}
+
+.circle-3-pos {
+    top: -250px;
+    left: 110%;
+}
+
+.circle-1 {
+    background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #114d83 100%);
+    opacity: 25%;
+}
+
+.circle-2 {
+    background: radial-gradient(circle at 50% 120%, #f681df, #ef76e9 10%, #9a2980 80%, #691642 100%);
+    opacity: 10%;
+}
+
+.circle-3 {
+    background: radial-gradient(circle at 50% 120%, #ffe082, #ffd54f 10%, #ffb300 80%, #6e4100 100%);
+    opacity: 25%;
+}
+
+.circle-1-container {
+    width: 75px;
+    height: 75px;
+}
+
+.circle-2-container {
+    width: 45px;
+    height: 45px;
+}
+
+.circle-3-container {
+    width: 60px;
+    height: 60px;
+}
+
+.circle-container {
+    display: inline-block;
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    -ms-perspective: 1200px;
+    -o-perspective: 1200px;
+    perspective: 1200px;
+    -webkit-perspective-origin: 50% 50%;
+    -moz-perspective-origin: 50% 50%;
+    -ms-perspective-origin: 50% 50%;
+    -o-perspective-origin: 50% 50%;
+    perspective-origin: 50% 50%;
+}

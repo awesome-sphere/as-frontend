@@ -8,10 +8,12 @@
           <v-stepper-step step="2"> Select Seat </v-stepper-step>
           <v-divider></v-divider>
           <v-stepper-step step="3"> Payment </v-stepper-step>
+          <v-divider></v-divider>
+          <v-stepper-step step="3"> Finish </v-stepper-step>
         </v-stepper-header>
       </v-stepper>
     </div>
-    <Booking v-if="e1 === 2"></Booking>
+    <booking v-if="e1 === 2"></booking>
   </v-container>
 </template>
 
@@ -19,7 +21,7 @@
 import Booking from "@/components/Booking";
 export default {
   name: "Movie",
-  components: {Booking},
+  components: { Booking },
   data() {
     return {
       e1: 2,
