@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="justify-center">
-      <v-col cols="5">
+      <v-col cols="6">
         <v-row class="justify-center mb-5">
           <v-col v-for="(seat_type, i) in seat_types" :key="i" cols="6">
             <v-row>
