@@ -20,7 +20,7 @@
         >
         <v-list-item six-line>
             <v-col
-            md="3">
+            cols="3">
                 <v-card-title class="mx-n2">
                     Theatre 1
                 </v-card-title>
@@ -50,7 +50,7 @@
 
         <v-list-item three-line>
             <v-col
-            md="3">
+            cols="3">
                 <v-card-title class="mx-n2">
                 Theatre 2   
                 </v-card-title>
@@ -80,7 +80,7 @@
 
         <v-list-item three-line>
             <v-col
-            md="3">
+            cols="3">
                 <v-card-title class="mx-n2">
                 Theatre 3   
                 </v-card-title>
@@ -110,7 +110,7 @@
 
        <v-list-item>
             <v-col
-            md="3">
+            cols="3">
                 <v-card-title class="mx-n2">
                 Theatre 4   
                 </v-card-title>
@@ -141,7 +141,7 @@
 
         <v-list-item three-line>
             <v-col
-            md="3">
+            cols="3">
                 <v-card-title class="mx-n2">
                 Theatre 5   
                 </v-card-title>
