@@ -12,7 +12,7 @@
             </v-card-title>
         </v-card>
         <v-card border-variant="dark" class="mx-auto justify-center" width="100%" color="transparent">
-        <!-- TODO: adjust chips' position, styling, and set up language -->
+        <!-- TODO: styling and set up language -->
         <v-chip-group
             v-model="selection"
             active-class="yellow lighten-2 black--text"
@@ -20,11 +20,11 @@
         >
         <v-list-item six-line>
             <v-col
-            md="4">
-                <v-card-title>
+            cols="3">
+                <v-card-title class="mx-n2">
                     Theatre 1
                 </v-card-title>
-                <v-card-text>
+                <v-card-text class="mx-n2">
                     <v-icon
                     default
                     color="blue-grey darken-4"
@@ -37,12 +37,12 @@
 
             <v-divider vertical/><v-divider vertical/>
           
-            <v-col class="mx-auto" v-for="elt in theatre1" v-bind:key="elt.time"
-            >
-
-                <v-chip class="mx-3">{{elt.time}}</v-chip>
-
-            </v-col>
+            <v-row  no-gutters>
+                <v-col cols="2" class="pa-2 justify-center text-center" outlined tile v-for="elt in theatre1" v-bind:key="elt.time"
+                >
+                    <v-chip>{{elt.time}}</v-chip>
+                </v-col>
+            </v-row>
 
         </v-list-item>
    
@@ -50,11 +50,11 @@
 
         <v-list-item three-line>
             <v-col
-            md="4">
-                <v-card-title>
+            cols="3">
+                <v-card-title class="mx-n2">
                 Theatre 2   
                 </v-card-title>
-                <v-card-text>
+                <v-card-text class="mx-n2">
                     <v-icon
                     default
                     color="blue-grey darken-4"
@@ -66,12 +66,13 @@
             </v-col>
         <v-divider no-gutters vertical/><v-divider vertical/>
 
-        <v-col class="mx-auto" v-for="elt in theatre2" v-bind:key="elt.time"
+        <v-row  no-gutters>
+            <v-col cols="2" class="pa-2 justify-center text-center" outlined tile v-for="elt in theatre2" v-bind:key="elt.time"
             >
-
-                <v-chip class="mx-3">{{elt.time}}</v-chip>
-
+            <v-chip>{{elt.time}}</v-chip>
         </v-col>
+            
+        </v-row>
 
         </v-list-item>
 
@@ -79,11 +80,11 @@
 
         <v-list-item three-line>
             <v-col
-            md="4">
-                <v-card-title>
+            cols="3">
+                <v-card-title class="mx-n2">
                 Theatre 3   
                 </v-card-title>
-                <v-card-text>
+                <v-card-text class="mx-n2">
                     <v-icon
                     default
                     color="blue-grey darken-4"
@@ -95,12 +96,13 @@
             </v-col>
         <v-divider no-gutters vertical/><v-divider vertical/>
 
-        <v-col class="mx-auto" v-for="elt in theatre3" v-bind:key="elt.time"
+        <v-row  no-gutters>
+            <v-col cols="2" class="pa-2 justify-center text-center" outlined tile v-for="elt in theatre3" v-bind:key="elt.time"
             >
-
-            <v-chip class="mx-3">{{elt.time}}</v-chip>
-
+            <v-chip>{{elt.time}}</v-chip>
         </v-col>
+            
+        </v-row>
 
         </v-list-item>
 
@@ -108,11 +110,11 @@
 
        <v-list-item>
             <v-col
-            md="4">
-                <v-card-title>
+            cols="3">
+                <v-card-title class="mx-n2">
                 Theatre 4   
                 </v-card-title>
-                <v-card-text>
+                <v-card-text class="mx-n2">
                     <v-icon
                     default
                     color="blue-grey darken-4"
@@ -122,27 +124,28 @@
                     Language
                 </v-card-text>
             </v-col>
+
         <v-divider no-gutters vertical/><v-divider vertical/>
 
-        <v-col class="mx-auto" v-for="elt in theatre4" v-bind:key="elt.time"
+        <v-row no-gutters>
+            <v-col cols="2" class="pa-2 justify-center text-center" outlined tile v-for="elt in theatre4" v-bind:key="elt.time"
             >
-
-            <v-chip class="mx-3">{{elt.time}}</v-chip>
-
-        </v-col>
+                <v-chip>{{elt.time}}</v-chip>
+            </v-col>
+            
+        </v-row>
 
         </v-list-item>
 
         <v-divider class="mx-4"></v-divider>
-   
 
         <v-list-item three-line>
             <v-col
-            md="4">
-                <v-card-title>
+            cols="3">
+                <v-card-title class="mx-n2">
                 Theatre 5   
                 </v-card-title>
-                <v-card-text>
+                <v-card-text class="mx-n2">
                     <v-icon
                     default
                     color="blue-grey darken-4"
@@ -152,14 +155,16 @@
                     Language
                 </v-card-text>
             </v-col>
+
         <v-divider no-gutters vertical/><v-divider vertical/>
 
-        <v-col class="mx-auto" v-for="elt in theatre5" v-bind:key="elt.time"
+        <v-row  no-gutters>
+            <v-col cols="2" class="pa-2 justify-center text-center" outlined tile v-for="elt in theatre5" v-bind:key="elt.time"
             >
-
-            <v-chip class="mx-3">{{elt.time}}</v-chip>
-
+            <v-chip>{{elt.time}}</v-chip>
         </v-col>
+            
+        </v-row>
 
         </v-list-item>
 
