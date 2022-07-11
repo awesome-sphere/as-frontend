@@ -2,7 +2,7 @@
   <v-container>
     <div class="background-circle-left"></div>
     <div class="background-circle-right"></div>
-    <v-row>
+    <v-row style="height: 90vh">
       <v-col cols="7" align-self="center">
         <div class="content">
           <div class="text-box">
@@ -26,7 +26,7 @@
           See Movie
         </v-btn>
       </v-col>
-      <v-col>
+      <v-col align-self="center">
         <carousel></carousel>
       </v-col>
     </v-row>
