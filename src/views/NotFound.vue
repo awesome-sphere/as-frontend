@@ -9,7 +9,16 @@
           class="ml-auto"
           src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4424790/Mirror.png"
           alt="404 Image"
-        />
+        >
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="rgb(15,55,66)"
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
       </v-col>
       <v-col align-self="center">
         <p class="title-page">Something went wrong here...</p>

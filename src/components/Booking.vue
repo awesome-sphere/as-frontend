@@ -16,7 +16,16 @@
           </v-col>
         </v-row>
         <v-card elevation="0" min-height="50vh" class="pr-5">
-          <v-img :src="require('../assets/screen.png')"></v-img>
+          <v-img :src="require('../assets/screen.png')" alt="screen">
+            <template v-slot:placeholder>
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular
+                  indeterminate
+                  color="rgb(15,55,66)"
+                ></v-progress-circular>
+              </v-row>
+            </template>
+          </v-img>
           <v-row class="justify-center mt-1">
             <v-col
               class="pa-0"

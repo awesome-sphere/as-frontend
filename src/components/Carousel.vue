@@ -20,14 +20,21 @@
         class="mx-auto mb-5"
         max-width="300"
         :src="n.image_src"
-      ></v-img>
+      >
+        <template v-slot:placeholder>
+          <v-row class="fill-height ma-0" align="center" justify="center">
+            <v-progress-circular
+              indeterminate
+              color="rgb(15,55,66)"
+            ></v-progress-circular>
+          </v-row>
+        </template>
+      </v-img>
       <v-card class="mx-auto pb-4" max-width="400" elevation="1">
         <v-card-title>
           <v-row>
             <v-col cols="1">
-              <v-icon color="#0f3742" class="mt-5 mr-2"
-                >mdi-movie-open</v-icon
-              >
+              <v-icon color="#0f3742" class="mt-5 mr-2">mdi-movie-open</v-icon>
             </v-col>
             <v-col>
               <v-list-item two-line>
@@ -35,9 +42,7 @@
                   <v-list-item-title class="text-h5">
                     {{ n.name }}
                   </v-list-item-title>
-                  <v-list-item-subtitle>{{
-                    n.sub_title
-                  }}</v-list-item-subtitle>
+                  <v-list-item-subtitle>{{ n.sub_title }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
