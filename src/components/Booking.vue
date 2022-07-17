@@ -95,7 +95,7 @@
               {{ time_slot || "N/A" }}
             </v-chip>
           </div>
-          <v-card class="mx-auto" max-width="200" elevation="0">
+          <v-card class="mx-auto" max-width="170" elevation="0">
             <v-card-title class="pt-2 pb-0">
               <span style="font-size: 14px" class="mx-auto">Selected Seat</span>
             </v-card-title>

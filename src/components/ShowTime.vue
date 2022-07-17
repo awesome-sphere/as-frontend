@@ -1,5 +1,5 @@
 <template>
-  <div class="div-content">
+  <v-container>
     <v-card
       flat
       tile
@@ -167,7 +167,7 @@
         <v-divider class="mx-4"></v-divider>
       </v-chip-group>
     </v-card>
-  </div>
+  </v-container>
 </template>
 
 <script>

@@ -78,4 +78,8 @@ export default {
 };
 </script>
 
-<style src="../css/Movie.css"></style>
+<style scoped>
+.v-stepper__header {
+  box-shadow: none;
+}
+</style>
