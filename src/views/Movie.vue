@@ -1,19 +1,21 @@
 <template>
   <v-container>
-    <div class="mb-5">
-      <v-stepper :value="e1" class="mt-12" elevation="0">
+    <div class="mb-10">
+      <v-stepper :value="e1" flat>
         <v-stepper-header>
-          <v-stepper-step :complete="e1 > 1" step="1">
+          <v-stepper-step step="1" color="#00838F" :complete="e1 > 1">
             Select Time Slot
           </v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step :complete="e1 > 2" step="2">
+          <v-stepper-step step="2" color="#00838F" :complete="e1 > 2">
             Select Seat
           </v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step :complete="e1 > 3" step="3"> Payment </v-stepper-step>
+          <v-stepper-step step="3" color="#00838F" :complete="e1 > 3">
+            Payment
+          </v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step step="4"> Finish </v-stepper-step>
+          <v-stepper-step step="4" color="#00838F"> Finish </v-stepper-step>
         </v-stepper-header>
         <v-stepper-items>
           <v-stepper-content step="1">
@@ -21,6 +23,9 @@
           </v-stepper-content>
           <v-stepper-content step="2">
             <booking></booking>
+          </v-stepper-content>
+          <v-stepper-content step="3">
+            <payment></payment>
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
@@ -44,11 +49,13 @@
 </template>
 
 <script>
-import Booking from "@/components/Booking";
 import ShowTime from "@/components/ShowTime";
+import Booking from "@/components/Booking";
+import Payment from "@/components/Payment";
+
 export default {
   name: "Movie",
-  components: { ShowTime, Booking },
+  components: { ShowTime, Booking, Payment },
   data() {
     return {
       e1: 1,
