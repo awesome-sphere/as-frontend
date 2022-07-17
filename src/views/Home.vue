@@ -2,8 +2,8 @@
   <v-container>
     <div class="background-circle-left"></div>
     <div class="background-circle-right"></div>
-    <v-row style="height: 90vh">
-      <v-col cols="7" align-self="center">
+    <v-row>
+      <v-col cols="7" align-self="center" class="mx-auto">
         <div class="content">
           <div class="text-box">
             <h2>

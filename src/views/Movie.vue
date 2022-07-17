@@ -58,7 +58,7 @@ export default {
   components: { ShowTime, Booking, Payment },
   data() {
     return {
-      e1: 1,
+      e1: 2,
       // steps: 2,
     };
   },

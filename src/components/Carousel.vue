@@ -6,7 +6,12 @@
     show-arrows-on-hover
     hide-delimiters
   >
-    <v-carousel-item v-for="(n, i) in movie" :key="i" style="width: 460px">
+    <v-carousel-item
+      class="mx-auto"
+      v-for="(n, i) in movie"
+      :key="i"
+      style="width: 460px"
+    >
       <div class="number-label">
         <span>{{ i + 1 }}</span>
       </div>

@@ -3,7 +3,7 @@
     <v-card
       flat
       tile
-      width="100%"
+      width="80%"
       class="mx-auto justify-center text-center"
       color="#8a9a9f"
     >
@@ -14,7 +14,7 @@
     <v-card
       border-variant="dark"
       class="mx-auto justify-center"
-      width="100%"
+      width="80%"
       color="transparent"
     >
       <!-- TODO: styling and set up language -->
