@@ -27,6 +27,9 @@
           <v-stepper-content step="3">
             <payment></payment>
           </v-stepper-content>
+          <v-stepper-content step="4">
+            <ticket></ticket>
+          </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
     </div>
@@ -52,10 +55,11 @@
 import ShowTime from "@/components/ShowTime";
 import Booking from "@/components/Booking";
 import Payment from "@/components/Payment";
+import Ticket from "../components/Ticket.vue";
 
 export default {
   name: "Movie",
-  components: { ShowTime, Booking, Payment },
+  components: { ShowTime, Booking, Payment, Ticket },
   data() {
     return {
       e1: 2,
