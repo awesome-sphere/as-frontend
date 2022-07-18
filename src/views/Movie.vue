@@ -22,7 +22,7 @@
             <show-time></show-time>
           </v-stepper-content>
           <v-stepper-content step="2">
-            <booking></booking>
+            <booking :movie_name="movie_name" :time_slot="time_slot"></booking>
           </v-stepper-content>
           <v-stepper-content step="3">
             <payment></payment>
@@ -59,7 +59,8 @@ export default {
   data() {
     return {
       e1: 2,
-      // steps: 2,
+      movie_name: "Thor: Love and Thunder",
+      time_slot: "13:00",
     };
   },
 

@@ -39,7 +39,18 @@
                 icon
                 :disabled="disableButton(seat.status)"
               >
-                <v-icon :color="getSeatColor(seat.status, 0)">mdi-seat</v-icon>
+                <v-icon
+                  v-if="!isSelectedSeat(seat.id, 'normal')"
+                  :color="getSeatColor(seat.status, 0)"
+                  @click="onChangeSelectedNormalSeat(seat.id)"
+                  >mdi-seat</v-icon
+                >
+                <v-icon
+                  v-else
+                  @click="onChangeSelectedNormalSeat(seat.id)"
+                  color="green"
+                  >mdi-check-circle</v-icon
+                >
               </v-btn>
             </v-col>
           </v-row>
@@ -110,10 +121,13 @@
             </v-card-title>
             <v-card-text
               class="mx-auto text-center"
-              v-if="selected_seat.length !== 0"
+              v-if="selected_normal_seat.length !== 0"
             >
-              <span v-for="(seat, i) in selected_seat" :key="i"
-                >{{ seat }},</span
+              <span v-for="(seat, i) in selected_normal_seat" :key="i"
+                >{{ seat
+                }}<span v-if="i !== selected_normal_seat.length - 1"
+                  >,</span
+                ></span
               >
             </v-card-text>
             <v-card-text class="mx-auto text-center" v-else>
@@ -146,7 +160,8 @@ export default {
       price: 0,
       normal_seats: [],
       premium_seats: [],
-      selected_seat: [],
+      selected_normal_seat: [],
+      selected_premium_seat: [],
       seat_types: [
         {
           icon: "mdi-seat",
@@ -171,6 +186,32 @@ export default {
   },
 
   methods: {
+    isSelectedSeat(seat_id, seat_list_type) {
+      let seat_lists =
+        seat_list_type === "normal"
+          ? this.selected_normal_seat
+          : this.selected_premium_seat;
+      return seat_lists.includes(seat_id);
+    },
+    calculatePrice() {
+      let normal_seat_price = this.seat_types.find(
+        (seat_type) => seat_type.name === "Executive"
+      ).price;
+      let premium_seat_price = this.seat_types.find(
+        (seat_type) => seat_type.name === "First class"
+      ).price;
+      this.price = (this.selected_normal_seat.length * normal_seat_price) + (this.selected_premium_seat * premium_seat_price);
+    },
+    onChangeSelectedNormalSeat(seat_id) {
+      if (this.isSelectedSeat(seat_id, "normal")) {
+        this.selected_normal_seat = this.selected_normal_seat.filter(
+          (selected_seat_id) => selected_seat_id !== seat_id
+        );
+      } else {
+        this.selected_normal_seat.push(seat_id);
+      }
+      this.calculatePrice()
+    },
     async getAllSeats() {
       // let result = await Vue.axios.post("/seating/get-all-seats", {
       //   theater_id: 2,
@@ -190,7 +231,6 @@ export default {
           status: Math.floor(Math.random() * 11) > 6 ? "AVAILABLE" : "BOOKED",
         });
       }
-      console.log(this.seats);
     },
 
     getSeatColor(status, seat_type) {
