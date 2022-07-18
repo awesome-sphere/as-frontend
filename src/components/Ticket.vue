@@ -57,30 +57,64 @@
 
     <v-list-item three-line>
         <v-row no-gutters>
-            <v-col cols="12" sm="4">
+
+            <v-col cols="12" sm="4" align="center" justify="center">
+                <v-card-text class="mx-n2" align="center" justify="center">
+                    DATE
+                </v-card-text>
+                <v-btn disabled md="5" class="mx-auto" elevation="0">
+                    <v-row align="center" justify="center">
+                        *DATE*
+                    </v-row>
+                </v-btn>
+                <v-divider class="mt-1 mb-3"></v-divider>
+                <v-card-text class="mx-n2" align="center" justify="center">
+                    SHOWTIME
+                </v-card-text>
+                <v-btn disabled md="1" elevation="0">
+                <v-row align="center" justify="center" >
+                    *SHOWTIME*
+                </v-row>
+            </v-btn>
+            </v-col>
+
+            <v-divider no-gutters vertical /><v-divider vertical />
+
+            <v-col cols="12" sm="4" align="center" justify="center">
                 <v-card-text class="mx-n2" align="center" justify="center">
                     SEAT
                 </v-card-text>
+                 <v-btn disabled md="5" class="mx-auto" elevation="0">
+                    <v-row align="center" justify="center">
+                        *SEAT*
+                    </v-row>
+                </v-btn>
+                
+                <!-- <v-list-item-avatar
+                    tile
+                    size="100"
+                    color="#e0e0e0"
+                ></v-list-item-avatar> -->
             </v-col>
             
             <v-divider no-gutters vertical /><v-divider vertical />
 
-            <v-col cols="12" sm="4">
+            <v-col cols="12" sm="4" align="center" justify="center">
                 <v-card-text class="mx-n2" align="center" justify="center">
                     THEATER
                 </v-card-text>
+                <v-list-item-avatar
+                    tile
+                    size="100"
+                    color="#e0e0e0"
+                    align="center" justify="center"
+                >
+                    <v-card-text align="center" justify="center">
+                        *THEATER*
+                    </v-card-text>
+                </v-list-item-avatar>
             </v-col>
-            <v-divider no-gutters vertical /><v-divider vertical />
 
-            <v-col cols="12" sm="4">
-                <v-card-text class="mx-n2" align="center" justify="center">
-                    SHOWTIME
-                </v-card-text>
-                <v-divider class="mt-1 mb-3"></v-divider>
-                <v-card-text class="mx-n2" align="center" justify="center">
-                    DATE
-                </v-card-text>
-            </v-col>
 
         </v-row>
 
