@@ -1,5 +1,8 @@
 .glass-card {
-    background: rgba(255, 255, 255, 0.4);
+    background: -moz-linear-gradient(top,  #ffffff66 0%, #daedf24f 75%, #b6e4ef44 100%);
+    background: -webkit-linear-gradient(top,  #ffffff66 0%,#daedff4f 75%,#b6e4ef44 100%);
+    background: linear-gradient(to bottom,  #ffffff66 0%,#daedf24f 75%,#b6e4ef44 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b6e4ef',GradientType=0 );
     box-shadow: inset 4px 4px 5px 0 rgba(255, 255, 255, 0.25),
         inset -4px -4px 5px 0 rgba(0, 0, 0, 0.125), 0 0 10px 1px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(7px);
