@@ -62,6 +62,18 @@
     </v-snackbar>
     <v-row class="justify-end">
       <v-btn
+        v-if="e1 === 1"
+        outlined
+        rounded
+        color="#175769"
+        elevation="0"
+        class="mr-4"
+        :to="{ name: 'MovieInfo', params: { id: $route.params.id } }"
+      >
+        Cancel
+      </v-btn>
+      <v-btn
+        v-else
         outlined
         rounded
         color="#175769"
@@ -71,8 +83,25 @@
       >
         Previous
       </v-btn>
-      <v-btn dark rounded color="#175769" elevation="0" @click="nextStep">
+      <v-btn
+        v-if="e1 !== 4"
+        dark
+        rounded
+        color="#175769"
+        elevation="0"
+        @click="nextStep"
+      >
         Next
+      </v-btn>
+      <v-btn
+        v-else
+        dark
+        rounded
+        color="#175769"
+        elevation="0"
+        :to="{ name: 'AllMovies' }"
+      >
+        Done
       </v-btn>
     </v-row>
   </v-container>
