@@ -19,11 +19,12 @@
         </v-stepper-header>
         <v-stepper-items>
           <v-stepper-content step="1">
-            <show-time></show-time>
+            <show-time @selectTimeSlot="getSelectedTimeSlot"></show-time>
           </v-stepper-content>
           <v-stepper-content step="2">
             <booking
               :movie_name="movie_name"
+              :theater="theater"
               :time_slot="time_slot"
               @submitSelectedSeat="getSelectedSeat"
             ></booking>
@@ -37,7 +38,14 @@
         </v-stepper-items>
       </v-stepper>
     </div>
-    <v-snackbar :value="alert_toggle" absolute top color="#d94c55" right elevation="1">
+    <v-snackbar
+      :value="alert_toggle"
+      absolute
+      top
+      color="#d94c55"
+      right
+      elevation="1"
+    >
       Please select at least one seat
     </v-snackbar>
     <v-row class="justify-end">
@@ -69,8 +77,9 @@ export default {
   components: { ShowTime, Booking, Payment, Ticket },
   data() {
     return {
-      e1: 2,
+      e1: 1,
       movie_name: "Thor: Love and Thunder",
+      theater: 1,
       time_slot: "13:00",
       selected_seat: [],
       alert_toggle: false,
@@ -102,9 +111,13 @@ export default {
         this.selected_seat = selected_seat_data;
         this.nextStep();
       } else {
-        console.log("pass")
+        console.log("pass");
         this.alert_toggle = true;
       }
+    },
+    getSelectedTimeSlot(timeSlot) {
+      this.theater = timeSlot.theater_id;
+      this.time_slot = timeSlot.time;
     },
   },
 };
