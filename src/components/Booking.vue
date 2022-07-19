@@ -67,8 +67,17 @@
                 icon
                 :disabled="disableButton(seat.status)"
               >
-                <v-icon :color="getSeatColor(seat.status, 1)"
+                <v-icon
+                  v-if="!isSelectedSeat(seat.id, 'premium')"
+                  @click="onChangeSelectedPremiumSeat(seat.id)"
+                  :color="getSeatColor(seat.status, 1)"
                   >mdi-sofa-single</v-icon
+                >
+                <v-icon
+                  v-else
+                  @click="onChangeSelectedPremiumSeat(seat.id)"
+                  color="green"
+                  >mdi-check-circle</v-icon
                 >
               </v-btn>
             </v-col>
@@ -119,8 +128,11 @@
             <v-card-title class="pt-2 pb-0">
               <span style="font-size: 14px" class="mx-auto">Selected Seat</span>
             </v-card-title>
+            <v-card-text class="mx-auto text-center pb-0">
+              <span>Executive</span>
+            </v-card-text>
             <v-card-text
-              class="mx-auto text-center"
+              class="mx-auto text-center pt-1 pb-3"
               v-if="selected_normal_seat.length !== 0"
             >
               <span v-for="(seat, i) in selected_normal_seat" :key="i"
@@ -130,7 +142,24 @@
                 ></span
               >
             </v-card-text>
-            <v-card-text class="mx-auto text-center" v-else>
+            <v-card-text class="mx-auto text-center pt-0 pb-2" v-else>
+              <span>-</span>
+            </v-card-text>
+            <v-card-text class="mx-auto text-center pt-0 pb-1">
+              <span>First Class</span>
+            </v-card-text>
+            <v-card-text
+              class="mx-auto text-center pt-1 pb-3"
+              v-if="selected_premium_seat.length !== 0"
+            >
+              <span v-for="(seat, i) in selected_premium_seat" :key="i"
+                >{{ seat
+                }}<span v-if="i !== selected_premium_seat.length - 1"
+                  >,</span
+                ></span
+              >
+            </v-card-text>
+            <v-card-text class="mx-auto text-center pt-0 pb-2" v-else>
               <span>-</span>
             </v-card-text>
             <v-card-text class="pt-0 text-center">
@@ -141,6 +170,16 @@
               </v-chip>
             </v-card-text>
           </v-card>
+          <v-card-actions class="mt-2">
+            <v-btn
+              color="#FFD54F"
+              class="ml-auto"
+              rounded
+              elevation="0"
+              @click="submitSelectedSeat"
+              >Confirm</v-btn
+            >
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -200,7 +239,9 @@ export default {
       let premium_seat_price = this.seat_types.find(
         (seat_type) => seat_type.name === "First class"
       ).price;
-      this.price = (this.selected_normal_seat.length * normal_seat_price) + (this.selected_premium_seat * premium_seat_price);
+      this.price =
+        this.selected_normal_seat.length * normal_seat_price +
+        this.selected_premium_seat.length * premium_seat_price;
     },
     onChangeSelectedNormalSeat(seat_id) {
       if (this.isSelectedSeat(seat_id, "normal")) {
@@ -210,7 +251,23 @@ export default {
       } else {
         this.selected_normal_seat.push(seat_id);
       }
-      this.calculatePrice()
+      this.calculatePrice();
+    },
+    onChangeSelectedPremiumSeat(seat_id) {
+      if (this.isSelectedSeat(seat_id, "premium")) {
+        this.selected_premium_seat = this.selected_premium_seat.filter(
+          (selected_seat_id) => selected_seat_id !== seat_id
+        );
+      } else {
+        this.selected_premium_seat.push(seat_id);
+      }
+      this.calculatePrice();
+    },
+    submitSelectedSeat() {
+      this.$emit(
+        "submitSelectedSeat",
+        this.selected_normal_seat.concat(this.selected_premium_seat)
+      );
     },
     async getAllSeats() {
       // let result = await Vue.axios.post("/seating/get-all-seats", {
@@ -225,7 +282,7 @@ export default {
           status: Math.floor(Math.random() * 11) > 6 ? "AVAILABLE" : "BOOKED",
         });
       }
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 65; i <= 75; i++) {
         this.premium_seats.push({
           id: i,
           status: Math.floor(Math.random() * 11) > 6 ? "AVAILABLE" : "BOOKED",
