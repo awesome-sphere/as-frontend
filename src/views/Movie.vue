@@ -23,9 +23,9 @@
           </v-stepper-content>
           <v-stepper-content step="2">
             <booking
-              :movie_name="movie_name"
+              :movieName="movieName"
               :theater="theater"
-              :time_slot="time_slot"
+              :timeSlot="timeSlot"
               @submitSelectedSeat="getSelectedSeat"
             ></booking>
           </v-stepper-content>
@@ -39,7 +39,7 @@
       </v-stepper>
     </div>
     <v-snackbar
-      :value="alert_toggle"
+      :value="alertToggle"
       absolute
       top
       color="#d94c55"
@@ -78,18 +78,18 @@ export default {
   data() {
     return {
       e1: 1,
-      movie_name: "Thor: Love and Thunder",
+      movieName: "Thor: Love and Thunder",
       theater: 1,
-      time_slot: "13:00",
-      selected_seat: [],
-      alert_toggle: false,
+      timeSlot: "13:00",
+      selectedSeat: [],
+      alertToggle: false,
     };
   },
   watch: {
-    alert_toggle(new_val) {
-      if (new_val) {
+    alertToggle(newVal) {
+      if (newVal) {
         setTimeout(() => {
-          this.alert_toggle = false;
+          this.alertToggle = false;
         }, 4000);
       }
     },
@@ -106,18 +106,18 @@ export default {
         this.e1 -= 1;
       }
     },
-    getSelectedSeat(selected_seat_data) {
-      if (selected_seat_data.length !== 0) {
-        this.selected_seat = selected_seat_data;
+    getSelectedSeat(selectedSeatData) {
+      if (selectedSeatData.length !== 0) {
+        this.selectedSeat = selectedSeatData;
         this.nextStep();
       } else {
         console.log("pass");
-        this.alert_toggle = true;
+        this.alertToggle = true;
       }
     },
     getSelectedTimeSlot(timeSlot) {
-      this.theater = timeSlot.theater_id;
-      this.time_slot = timeSlot.time;
+      this.theater = timeSlot.theaterID;
+      this.timeSlot = timeSlot.time;
     },
   },
 };

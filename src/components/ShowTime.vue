@@ -19,11 +19,11 @@
     >
       <!-- TODO: styling and set up language -->
       <v-chip-group active-class="yellow lighten-2 black--text" column>
-        <v-container v-for="(th, i) in theaters" :key="th.theater_id">
+        <v-container v-for="(th, i) in theaters" :key="th.theaterID">
           <v-list-item six-line>
             <v-col cols="3">
               <v-card-title class="mx-n2">
-                Theatre {{ th.theater_id }}
+                Theatre {{ th.theaterID }}
               </v-card-title>
               <v-card-text class="mx-n2">
                 <v-icon default color="blue-grey darken-4">
@@ -44,7 +44,7 @@
                 v-for="t in th.time"
                 :key="t"
               >
-                <v-chip @click="selectTimeSlot(th.theater_id, t)">
+                <v-chip @click="selectTimeSlot(th.theaterID, t)">
                   {{ t }}
                 </v-chip>
               </v-col>
@@ -96,13 +96,13 @@ export default {
 
       for (let i = 1; i <= 5; i++) {
         this.theaters.push({
-          theater_id: i,
+          theaterID: i,
           time: slots[i - 1],
         });
       }
     },
     selectTimeSlot(id, time) {
-      const timeSlot = { theater_id: id, time: time };
+      const timeSlot = { theaterID: id, time: time };
       this.$emit("selectTimeSlot", timeSlot);
     },
   },

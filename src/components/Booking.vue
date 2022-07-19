@@ -3,14 +3,14 @@
     <v-row class="justify-center">
       <v-col cols="7">
         <v-row class="justify-center mb-5">
-          <v-col v-for="(seat_type, i) in seat_types" :key="i" cols="6">
+          <v-col v-for="(seatType, i) in seatTypes" :key="i" cols="6">
             <v-row>
               <v-col align-self="center" cols="2">
-                <v-icon :color="seat_type.color">{{ seat_type.icon }}</v-icon>
+                <v-icon :color="seatType.color">{{ seatType.icon }}</v-icon>
               </v-col>
               <v-col>
-                <span class="ma-0">{{ seat_type.name }}</span>
-                <p class="ma-0 sub-title">{{ seat_type.price }} Baht</p>
+                <span class="ma-0">{{ seatType.name }}</span>
+                <p class="ma-0 sub-title">{{ seatType.price }} Baht</p>
               </v-col>
             </v-row>
           </v-col>
@@ -29,7 +29,7 @@
           <v-row class="justify-center mt-1">
             <v-col
               class="pa-0"
-              v-for="seat in normal_seats"
+              v-for="seat in normalSeats"
               v-bind:key="seat.id"
               cols="1"
             >
@@ -57,7 +57,7 @@
           <v-row class="justify-center mt-8">
             <v-col
               class="pa-0"
-              v-for="seat in premium_seats"
+              v-for="seat in premiumSeats"
               v-bind:key="seat.id"
               cols="1"
             >
@@ -115,13 +115,13 @@
           <div>
             <span style="font-weight: bold" class="mr-1">Movie:</span>
             <v-chip color="rgba(11, 181, 147,0.7)" class="ma-2">
-              {{ movie_name || "N/A" }}
+              {{ movieName || "N/A" }}
             </v-chip>
           </div>
           <div class="mb-3">
             <span style="font-weight: bold" class="mr-1">Time slot:</span>
             <v-chip color="rgba(11, 181, 147,0.7)" class="ma-2">
-              Theater {{ theater }} - {{ time_slot || "N/A" }}
+              Theater {{ theater }} - {{ timeSlot || "N/A" }}
             </v-chip>
           </div>
           <v-card class="mx-auto" max-width="170" elevation="0">
@@ -133,11 +133,11 @@
             </v-card-text>
             <v-card-text
               class="mx-auto text-center pt-1 pb-3"
-              v-if="selected_normal_seat.length !== 0"
+              v-if="selectedNormalSeat.length !== 0"
             >
-              <span v-for="(seat, i) in selected_normal_seat" :key="i"
+              <span v-for="(seat, i) in selectedNormalSeat" :key="i"
                 >{{ seat
-                }}<span v-if="i !== selected_normal_seat.length - 1"
+                }}<span v-if="i !== selectedNormalSeat.length - 1"
                   >,</span
                 ></span
               >
@@ -150,11 +150,11 @@
             </v-card-text>
             <v-card-text
               class="mx-auto text-center pt-1 pb-3"
-              v-if="selected_premium_seat.length !== 0"
+              v-if="selectedPremiumSeat.length !== 0"
             >
-              <span v-for="(seat, i) in selected_premium_seat" :key="i"
+              <span v-for="(seat, i) in selectedPremiumSeat" :key="i"
                 >{{ seat
-                }}<span v-if="i !== selected_premium_seat.length - 1"
+                }}<span v-if="i !== selectedPremiumSeat.length - 1"
                   >,</span
                 ></span
               >
@@ -191,17 +191,17 @@ import store from "@/store";
 
 export default {
   name: "Booking",
-  props: ["time_slot", "movie_name", "theater"],
+  props: ["timeSlot", "movieName", "theater"],
   data() {
     return {
       username: "",
       email: "",
       price: 0,
-      normal_seats: [],
-      premium_seats: [],
-      selected_normal_seat: [],
-      selected_premium_seat: [],
-      seat_types: [
+      normalSeats: [],
+      premiumSeats: [],
+      selectedNormalSeat: [],
+      selectedPremiumSeat: [],
+      seatTypes: [
         {
           icon: "mdi-seat",
           name: "Executive",
@@ -225,74 +225,74 @@ export default {
   },
 
   methods: {
-    isSelectedSeat(seat_id, seat_list_type) {
-      let seat_lists =
-        seat_list_type === "normal"
-          ? this.selected_normal_seat
-          : this.selected_premium_seat;
-      return seat_lists.includes(seat_id);
+    isSelectedSeat(seatID, seatListType) {
+      let seatLists =
+        seatListType === "normal"
+          ? this.selectedNormalSeat
+          : this.selectedPremiumSeat;
+      return seatLists.includes(seatID);
     },
     calculatePrice() {
-      let normal_seat_price = this.seat_types.find(
-        (seat_type) => seat_type.name === "Executive"
+      let normalSeatPrice = this.seatTypes.find(
+        (seatType) => seatType.name === "Executive"
       ).price;
-      let premium_seat_price = this.seat_types.find(
-        (seat_type) => seat_type.name === "First class"
+      let premiumSeatPrice = this.seatTypes.find(
+        (seatType) => seatType.name === "First class"
       ).price;
       this.price =
-        this.selected_normal_seat.length * normal_seat_price +
-        this.selected_premium_seat.length * premium_seat_price;
+        this.selectedNormalSeat.length * normalSeatPrice +
+        this.selectedPremiumSeat.length * premiumSeatPrice;
     },
-    onChangeSelectedNormalSeat(seat_id) {
-      if (this.isSelectedSeat(seat_id, "normal")) {
-        this.selected_normal_seat = this.selected_normal_seat.filter(
-          (selected_seat_id) => selected_seat_id !== seat_id
+    onChangeSelectedNormalSeat(seatID) {
+      if (this.isSelectedSeat(seatID, "normal")) {
+        this.selectedNormalSeat = this.selectedNormalSeat.filter(
+          (selectedSeatID) => selectedSeatID !== seatID
         );
       } else {
-        this.selected_normal_seat.push(seat_id);
+        this.selectedNormalSeat.push(seatID);
       }
       this.calculatePrice();
     },
-    onChangeSelectedPremiumSeat(seat_id) {
-      if (this.isSelectedSeat(seat_id, "premium")) {
-        this.selected_premium_seat = this.selected_premium_seat.filter(
-          (selected_seat_id) => selected_seat_id !== seat_id
+    onChangeSelectedPremiumSeat(seatID) {
+      if (this.isSelectedSeat(seatID, "premium")) {
+        this.selectedPremiumSeat = this.selectedPremiumSeat.filter(
+          (selectedSeatID) => selectedSeatID !== seatID
         );
       } else {
-        this.selected_premium_seat.push(seat_id);
+        this.selectedPremiumSeat.push(seatID);
       }
       this.calculatePrice();
     },
     submitSelectedSeat() {
       this.$emit(
         "submitSelectedSeat",
-        this.selected_normal_seat.concat(this.selected_premium_seat)
+        this.selectedNormalSeat.concat(this.selectedPremiumSeat)
       );
     },
     async getAllSeats() {
       // let result = await Vue.axios.post("/seating/get-all-seats", {
       //   theater_id: 2,
-      //   time_slot_id: 2,
+      //   timeSlot_id: 2,
       // });
       // this.seats = result.data.seats_info;
       // Mock for now
       for (let i = 1; i <= 60; i++) {
-        this.normal_seats.push({
+        this.normalSeats.push({
           id: i,
           status: Math.floor(Math.random() * 11) > 6 ? "AVAILABLE" : "BOOKED",
         });
       }
       for (let i = 65; i <= 75; i++) {
-        this.premium_seats.push({
+        this.premiumSeats.push({
           id: i,
           status: Math.floor(Math.random() * 11) > 6 ? "AVAILABLE" : "BOOKED",
         });
       }
     },
 
-    getSeatColor(status, seat_type) {
+    getSeatColor(status, seatType) {
       if (status === "AVAILABLE") {
-        return seat_type === 0 ? "blue" : "red";
+        return seatType === 0 ? "blue" : "red";
       }
       return "";
     },

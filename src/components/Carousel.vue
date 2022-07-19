@@ -19,7 +19,7 @@
         style="border-radius: 10%"
         class="mx-auto mb-5"
         max-width="300"
-        :src="n.image_src"
+        :src="n.imageSrc"
       >
         <template v-slot:placeholder>
           <v-row class="fill-height ma-0" align="center" justify="center">
@@ -42,7 +42,7 @@
                   <v-list-item-title class="text-h5">
                     {{ n.name }}
                   </v-list-item-title>
-                  <v-list-item-subtitle>{{ n.sub_title }}</v-list-item-subtitle>
+                  <v-list-item-subtitle>{{ n.subTitle }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-col>
@@ -76,19 +76,19 @@ export default {
     return {
       movie: [
         {
-          image_src: require("../assets/doctor-strange.jpeg"),
+          imageSrc: require("../assets/doctor-strange.jpeg"),
           name: "Docker strange",
-          sub_title: "Mon, 13:30 PM on Theater 1",
+          subTitle: "Mon, 13:30 PM on Theater 1",
         },
         {
-          image_src: require("../assets/avenger-endgame.jpeg"),
+          imageSrc: require("../assets/avenger-endgame.jpeg"),
           name: "Avenger Endgame",
-          sub_title: "Tues, 04:00 PM on Theater 5",
+          subTitle: "Tues, 04:00 PM on Theater 5",
         },
         {
-          image_src: require("../assets/spiderman-no-way-home.jpeg"),
+          imageSrc: require("../assets/spiderman-no-way-home.jpeg"),
           name: "Spider-man: No Way Home",
-          sub_title: "Friday, 03:00 PM on Theater 2",
+          subTitle: "Friday, 03:00 PM on Theater 2",
         },
       ],
     };
