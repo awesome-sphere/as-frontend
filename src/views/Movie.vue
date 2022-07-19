@@ -36,10 +36,16 @@
             <v-col align="center" justify="center">
               <p class="title-page">Payment Successful!</p>
               <p class="sub-title-page">
-                Thank you for your payment! The following is your ticket. Hope you have a great time at AS CINEMA!
+                Thank you for your payment! The following is your ticket. Hope
+                you have a great time at AS CINEMA!
               </p>
             </v-col>
-            <ticket></ticket>
+            <ticket
+              :movieName="movieName"
+              :theater="theater"
+              :timeSlot="timeSlot"
+              :selectedSeat="selectedSeat"
+            ></ticket>
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
@@ -124,6 +130,7 @@ export default {
     getSelectedTimeSlot(timeSlot) {
       this.theater = timeSlot.theaterID;
       this.timeSlot = timeSlot.time;
+      this.nextStep();
     },
   },
 };

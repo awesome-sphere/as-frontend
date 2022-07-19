@@ -1,157 +1,117 @@
 <template>
-
- <!-- TODO: adding text and fixing layout for details in the ticket-->
-
   <v-card
     class="mx-auto pa-5"
     max-width="450"
     color="#0f3742"
     outlined
     elevation="0"
-  >  
-
+  >
     <v-img
-        width="30%"
-        src="@/assets/logo.png"
-        class="mx-auto pa-5"
-        outlined
-        elevation="0"
+      width="20%"
+      src="@/assets/logo.png"
+      class="mx-auto mb-5"
+      outlined
+      elevation="0"
     ></v-img>
 
     <v-card
-        class="mx-auto pa-5"
-        max-width="420"
-        outlined
-        width="100%"
-        elevation="0"
+      class="mx-auto pa-2 pb-5"
+      max-width="420"
+      outlined
+      width="100%"
+      elevation="0"
     >
-
-    <v-col>
-        <v-row
+      <v-col>
+        <v-row align="center" justify="space-around">
+          <v-card-text>
+            <div class="text--primary">
+              <v-row align="center" justify="center">
+                <strong> MOVIE </strong>
+              </v-row>
+            </div>
+          </v-card-text>
+          <v-sheet
+            class="mx-auto mb-2 text--secondary pa-2"
+            height="40"
+            width="340"
+            color="grey lighten-3"
             align="center"
-            justify="space-around"
-        >
-            <v-card-text >
-                <div class="text--primary">
-                    <v-row align="center" justify="center"><strong>
-                        MOVIE
-                    </strong></v-row>
-                </div>
+            justify="center"
+            v-text="movieName"
+          >
+          </v-sheet>
+        </v-row>
+      </v-col>
+
+      <v-list-item three-line>
+        <v-row>
+          <v-col cols="18" sm="6" align="center" justify="center">
+            <v-card-text>
+              <div class="text--primary">
+                <v-row align="center" justify="center">
+                  <strong> DATE </strong>
+                </v-row>
+              </div>
             </v-card-text>
-
             <v-sheet
-                    class="mx-auto text--secondary pa-2"
-                    height="40"
-                    width="300"
-                    color="grey lighten-3"
-                    align="center" justify="center"
+              class="mx-auto mb-2 text--secondary pa-2"
+              height="40"
+              width="150"
+              color="grey lighten-3"
+              elevation="0"
             >
-                Thor: Love and Thunder
+              19/07/22
             </v-sheet>
+            <v-card-text>
+              <div class="text--primary">
+                <v-row align="center" justify="center">
+                  <strong> SHOWTIME </strong>
+                </v-row>
+              </div>
+            </v-card-text>
+            <v-sheet
+              class="mx-auto text--secondary pa-2"
+              height="40"
+              width="150"
+              color="grey lighten-3"
+              elevation="0"
+              v-text="timeSlot"
+            >
+            </v-sheet>
+          </v-col>
+
+          <v-col cols="18" sm="6" align="center" justify="center">
+            <v-card-text>
+              <div class="text--primary">
+                <v-row align="center" justify="center">
+                  <strong> THEATER {{ theater }} </strong>
+                </v-row>
+              </div>
+            </v-card-text>
+            <v-sheet
+              class="mx-auto text--secondary pa-2"
+              height="120"
+              width="150"
+              color="grey lighten-3"
+              elevation="0"
+            >
+              <span v-for="(seat, i) in selectedSeat" :key="i">
+                {{ seat }}
+                <span v-if="i !== selectedSeat.length - 1">,</span>
+              </span>
+            </v-sheet>
+          </v-col>
         </v-row>
-    </v-col>
-
-    <v-divider class="mt-1 mb-3"></v-divider>
-
-    <v-list-item three-line>
-        <v-row no-gutters>
-
-            <v-col cols="12" sm="4" align="center" justify="center">
-                <v-card-text >
-                <div class="text--primary">
-                    <v-row align="center" justify="center"><strong>
-                        DATE
-                    </strong></v-row>
-                </div>
-                </v-card-text>
-
-                <v-sheet
-                    class="mx-auto text--secondary pa-2"
-                    height="40"
-                    width="100"
-                    color="grey lighten-3"
-                    elevation="0"
-                >
-                    19/07/22
-                </v-sheet>
-                <v-divider class="mt-1 mb-3"></v-divider>
-                <v-card-text >
-                    <div class="text--primary">
-                        <v-row align="center" justify="center"><strong>
-                            SHOWTIME
-                        </strong></v-row>
-                    </div>
-                </v-card-text>
-                <v-sheet
-                    class="mx-auto text--secondary pa-2"
-                    height="40"
-                    width="100"
-                    color="grey lighten-3"
-                    elevation="0"
-                >
-                    13:00
-                </v-sheet>
-
-            </v-col>
-
-            <v-divider no-gutters vertical /><v-divider vertical />
-
-            <v-col cols="12" sm="4" align="center" justify="center">
-                <v-card-text >
-                    <div class="text--primary">
-                        <v-row align="center" justify="center"><strong>
-                            SEAT
-                        </strong></v-row>
-                    </div>
-                </v-card-text>
-                <v-sheet
-                    class="mx-auto text--secondary pa-2"
-                    height="90"
-                    width="100"
-                    color="grey lighten-3"
-                    elevation="0"
-                    
-                >
-                    A16
-                </v-sheet>
-
-            </v-col>
-            
-            <v-divider no-gutters vertical /><v-divider vertical />
-
-            <v-col cols="12" sm="4" align="center" justify="center">
-                <v-card-text >
-                    <div class="text--primary">
-                        <v-row align="center" justify="center"><strong>
-                            THEATER
-                        </strong></v-row>
-                    </div>
-                </v-card-text>
-                <v-sheet
-                    class="mx-auto text--secondary pa-2"
-                    height="90"
-                    width="100"
-                    color="grey lighten-3"
-                    elevation="0"
-                >
-                    3
-                </v-sheet>
-
-            </v-col>
-
-
-        </v-row>
-
-    </v-list-item>
-    
-  </v-card>
+      </v-list-item>
+    </v-card>
   </v-card>
 </template>
 
 <script>
 export default {
   name: "Ticket",
-}
+  props: ["timeSlot", "movieName", "theater", "selectedSeat"],
+};
 </script>
 
 <style scoped></style>
