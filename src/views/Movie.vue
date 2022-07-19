@@ -19,17 +19,47 @@
         </v-stepper-header>
         <v-stepper-items>
           <v-stepper-content step="1">
-            <show-time></show-time>
+            <show-time @selectTimeSlot="getSelectedTimeSlot"></show-time>
           </v-stepper-content>
           <v-stepper-content step="2">
-            <booking></booking>
+            <booking
+              :movieName="movieName"
+              :theater="theater"
+              :timeSlot="timeSlot"
+              @submitSelectedSeat="getSelectedSeat"
+            ></booking>
           </v-stepper-content>
           <v-stepper-content step="3">
             <payment></payment>
           </v-stepper-content>
+          <v-stepper-content step="4">
+            <v-col align="center" justify="center">
+              <p class="title-page">Payment Successful!</p>
+              <p class="sub-title-page">
+                Thank you for your payment! The following is your ticket. Hope
+                you have a great time at AS CINEMA!
+              </p>
+            </v-col>
+            <ticket
+              :movieName="movieName"
+              :theater="theater"
+              :timeSlot="timeSlot"
+              :selectedSeat="selectedSeat"
+            ></ticket>
+          </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
     </div>
+    <v-snackbar
+      :value="alertToggle"
+      absolute
+      top
+      color="#d94c55"
+      right
+      elevation="1"
+    >
+      Please select at least one seat
+    </v-snackbar>
     <v-row class="justify-end">
       <v-btn
         outlined
@@ -52,15 +82,29 @@
 import ShowTime from "@/components/ShowTime";
 import Booking from "@/components/Booking";
 import Payment from "@/components/Payment";
+import Ticket from "../components/Ticket.vue";
 
 export default {
   name: "Movie",
-  components: { ShowTime, Booking, Payment },
+  components: { ShowTime, Booking, Payment, Ticket },
   data() {
     return {
-      e1: 2,
-      // steps: 2,
+      e1: 1,
+      movieName: "Thor: Love and Thunder",
+      theater: 1,
+      timeSlot: "13:00",
+      selectedSeat: [],
+      alertToggle: false,
     };
+  },
+  watch: {
+    alertToggle(newVal) {
+      if (newVal) {
+        setTimeout(() => {
+          this.alertToggle = false;
+        }, 4000);
+      }
+    },
   },
 
   methods: {
@@ -73,6 +117,20 @@ export default {
       if (this.e1 > 1) {
         this.e1 -= 1;
       }
+    },
+    getSelectedSeat(selectedSeatData) {
+      if (selectedSeatData.length !== 0) {
+        this.selectedSeat = selectedSeatData;
+        this.nextStep();
+      } else {
+        console.log("pass");
+        this.alertToggle = true;
+      }
+    },
+    getSelectedTimeSlot(timeSlot) {
+      this.theater = timeSlot.theaterID;
+      this.timeSlot = timeSlot.time;
+      this.nextStep();
     },
   },
 };

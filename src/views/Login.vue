@@ -37,14 +37,7 @@
         </div>
       </div>
     </v-container>
-    <v-snackbar
-      :value="alert"
-      absolute
-      top
-      color="#d94c55"
-      right
-      elevation="1"
-    >
+    <v-snackbar :value="alert" absolute top color="#d94c55" right elevation="1">
       {{ message }}
     </v-snackbar>
   </div>
@@ -68,8 +61,8 @@ export default {
     },
   },
   watch: {
-    alert(new_val) {
-      if (new_val) {
+    alert(newVal) {
+      if (newVal) {
         setTimeout(() => {
           this.alert = 0;
         }, 4000);
