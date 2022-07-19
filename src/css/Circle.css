@@ -55,8 +55,18 @@
 }
 
 .circle-7-pos {
-    top: -900px;
-    left: 85%;
+    top: -850px;
+    left: 114%;
+}
+
+.circle-8-pos {
+    top: -220px;
+    left: 110%;
+}
+
+.circle-9-pos {
+    top: -150px;
+    left: 82%;
 }
 
 .blue-circle {

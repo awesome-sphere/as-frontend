@@ -7,6 +7,7 @@ import Movie from "@/views/Movie";
 import MovieInfo from "@/views/MovieInfo";
 import Login from "@/views/Login";
 import NotFound from "@/views/NotFound";
+import SignUp from "@/views/SignUp";
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: SignUp,
   },
   {
     path: "*",
