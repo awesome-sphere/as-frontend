@@ -33,6 +33,12 @@
             <payment></payment>
           </v-stepper-content>
           <v-stepper-content step="4">
+            <v-col align="center" justify="center">
+              <p class="title-page">Payment Successful!</p>
+              <p class="sub-title-page">
+                Thank you for your payment! The following is your ticket. Hope you have a great time at AS CINEMA!
+              </p>
+            </v-col>
             <ticket></ticket>
           </v-stepper-content>
         </v-stepper-items>

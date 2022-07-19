@@ -1,12 +1,6 @@
 <template>
 
  <!-- TODO: adding text and fixing layout for details in the ticket-->
-  <!-- <v-col align-self="center"> -->
-        <!-- <p class="title-page">Something went wrong here...</p> -->
-        <!-- <p class="sub-title-page"> -->
-          <!-- Your payment has been successfully processed! The following is your ticket! -->
-        <!-- </p> -->
-  <!-- </v-col> -->
 
   <v-card
     class="mx-auto pa-5"
@@ -15,7 +9,7 @@
     outlined
     elevation="0"
   >  
-    <!-- <v-card-title class="white--text mx-auto text-h4 justify-center"><strong>AS CINEMA</strong></v-card-title> -->
+
     <v-img
         width="30%"
         src="@/assets/logo.png"
@@ -39,17 +33,21 @@
         >
             <v-card-text >
                 <div class="text--primary">
-                    <v-row align="center" justify="center">
+                    <v-row align="center" justify="center"><strong>
                         MOVIE
-                    </v-row>
+                    </strong></v-row>
                 </div>
             </v-card-text>
-            
-            <v-btn disabled class="mx-auto pa-5" elevation="0">
-                <v-row align="center" justify="center">
-                    *MOVIE NAME*
-                </v-row>
-            </v-btn>
+
+            <v-sheet
+                    class="mx-auto text--secondary pa-2"
+                    height="40"
+                    width="300"
+                    color="grey lighten-3"
+                    align="center" justify="center"
+            >
+                Thor: Love and Thunder
+            </v-sheet>
         </v-row>
     </v-col>
 
@@ -59,77 +57,91 @@
         <v-row no-gutters>
 
             <v-col cols="12" sm="4" align="center" justify="center">
-                <v-card-text class="mx-n2" align="center" justify="center">
-                    DATE
+                <v-card-text >
+                <div class="text--primary">
+                    <v-row align="center" justify="center"><strong>
+                        DATE
+                    </strong></v-row>
+                </div>
                 </v-card-text>
-                <v-btn disabled md="5" class="mx-auto" elevation="0">
-                    <v-row align="center" justify="center">
-                        *DATE*
-                    </v-row>
-                </v-btn>
+
+                <v-sheet
+                    class="mx-auto text--secondary pa-2"
+                    height="40"
+                    width="100"
+                    color="grey lighten-3"
+                    elevation="0"
+                >
+                    19/07/22
+                </v-sheet>
                 <v-divider class="mt-1 mb-3"></v-divider>
-                <v-card-text class="mx-n2" align="center" justify="center">
-                    SHOWTIME
+                <v-card-text >
+                    <div class="text--primary">
+                        <v-row align="center" justify="center"><strong>
+                            SHOWTIME
+                        </strong></v-row>
+                    </div>
                 </v-card-text>
-                <v-btn disabled md="1" elevation="0">
-                <v-row align="center" justify="center" >
-                    *SHOWTIME*
-                </v-row>
-            </v-btn>
+                <v-sheet
+                    class="mx-auto text--secondary pa-2"
+                    height="40"
+                    width="100"
+                    color="grey lighten-3"
+                    elevation="0"
+                >
+                    13:00
+                </v-sheet>
+
             </v-col>
 
             <v-divider no-gutters vertical /><v-divider vertical />
 
             <v-col cols="12" sm="4" align="center" justify="center">
-                <v-card-text class="mx-n2" align="center" justify="center">
-                    SEAT
+                <v-card-text >
+                    <div class="text--primary">
+                        <v-row align="center" justify="center"><strong>
+                            SEAT
+                        </strong></v-row>
+                    </div>
                 </v-card-text>
-                 <v-btn disabled md="5" class="mx-auto" elevation="0">
-                    <v-row align="center" justify="center">
-                        *SEAT*
-                    </v-row>
-                </v-btn>
-                
-                <!-- <v-list-item-avatar
-                    tile
-                    size="100"
-                    color="#e0e0e0"
-                ></v-list-item-avatar> -->
+                <v-sheet
+                    class="mx-auto text--secondary pa-2"
+                    height="90"
+                    width="100"
+                    color="grey lighten-3"
+                    elevation="0"
+                    
+                >
+                    A16
+                </v-sheet>
+
             </v-col>
             
             <v-divider no-gutters vertical /><v-divider vertical />
 
             <v-col cols="12" sm="4" align="center" justify="center">
-                <v-card-text class="mx-n2" align="center" justify="center">
-                    THEATER
+                <v-card-text >
+                    <div class="text--primary">
+                        <v-row align="center" justify="center"><strong>
+                            THEATER
+                        </strong></v-row>
+                    </div>
                 </v-card-text>
-                <v-list-item-avatar
-                    tile
-                    size="100"
-                    color="#e0e0e0"
-                    align="center" justify="center"
+                <v-sheet
+                    class="mx-auto text--secondary pa-2"
+                    height="90"
+                    width="100"
+                    color="grey lighten-3"
+                    elevation="0"
                 >
-                    <v-card-text align="center" justify="center">
-                        *THEATER*
-                    </v-card-text>
-                </v-list-item-avatar>
+                    3
+                </v-sheet>
+
             </v-col>
 
 
         </v-row>
 
-          <!-- <v-row no-gutters>
-            <v-col
-              cols="2"
-              class="pa-2 justify-center text-center"
-              outlined
-              tile
-            >
-              <v-card-text class="mx-n2">
-                CINEMA/โรง
-              </v-card-text>
-            </v-col>
-          </v-row> -->
     </v-list-item>
     
   </v-card>
