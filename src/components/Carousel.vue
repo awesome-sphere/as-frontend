@@ -77,18 +77,18 @@ export default {
       movie: [
         {
           imageSrc: require("../assets/doctor-strange.jpeg"),
-          name: "Docker strange",
-          subTitle: "Mon, 13:30 PM on Theater 1",
+          name: "Docker Strange",
+          subTitle: "Mon, 13:30 PM in Theater 1",
         },
         {
           imageSrc: require("../assets/avenger-endgame.jpeg"),
           name: "Avenger Endgame",
-          subTitle: "Tues, 04:00 PM on Theater 5",
+          subTitle: "Tues, 04:00 PM in Theater 5",
         },
         {
           imageSrc: require("../assets/spiderman-no-way-home.jpeg"),
-          name: "Spider-man: No Way Home",
-          subTitle: "Friday, 03:00 PM on Theater 2",
+          name: "Spider-Man: No Way Home",
+          subTitle: "Fri, 03:00 PM in Theater 2",
         },
       ],
     };

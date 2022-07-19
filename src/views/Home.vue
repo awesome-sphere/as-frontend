@@ -7,7 +7,7 @@
         <div class="content">
           <div class="text-box">
             <h2>
-              It's not just Movie
+              It's not just a Movie
               <br />
               It's <span>AS Cinema</span>
             </h2>
@@ -23,7 +23,7 @@
         </div>
         <v-btn rounded elevation="0" color="#175769" dark to="/all-movies">
           <v-icon class="mr-1">mdi-movie-filter</v-icon>
-          See Movie
+          See Movies
         </v-btn>
       </v-col>
       <v-col align-self="center">

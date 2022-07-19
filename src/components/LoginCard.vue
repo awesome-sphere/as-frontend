@@ -85,9 +85,11 @@
           class="justify-center align-center text-center align-content-center"
           ><v-card-text class="pa-1 my-auto mt-3" style="color: #787474"
             >Need an account?
-            <span class="dark-green--text">Sign Up</span></v-card-text
-          ></v-flex
-        >
+            <router-link :to="{ name: 'SignUp' }" class="dark-green--text">
+              Sign Up
+            </router-link>
+          </v-card-text>
+        </v-flex>
       </v-card>
     </v-col>
   </v-row>
