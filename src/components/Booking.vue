@@ -121,7 +121,7 @@
           <div class="mb-3">
             <span style="font-weight: bold" class="mr-1">Time slot:</span>
             <v-chip color="rgba(11, 181, 147,0.7)" class="ma-2">
-              {{ time_slot || "N/A" }}
+              Theater {{ theater }} - {{ time_slot || "N/A" }}
             </v-chip>
           </div>
           <v-card class="mx-auto" max-width="170" elevation="0">
@@ -191,7 +191,7 @@ import store from "@/store";
 
 export default {
   name: "Booking",
-  props: ["time_slot", "movie_name"],
+  props: ["time_slot", "movie_name", "theater"],
   data() {
     return {
       username: "",
