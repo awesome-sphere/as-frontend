@@ -60,7 +60,7 @@
               color="grey lighten-3"
               elevation="0"
             >
-              19/07/22
+              {{ formatDate(timeSlot) }}
             </v-sheet>
             <v-card-text>
               <div class="text--primary">
@@ -75,7 +75,7 @@
               width="150"
               color="grey lighten-3"
               elevation="0"
-              v-text="timeSlot"
+              v-text="formatTime(timeSlot)"
             >
             </v-sheet>
           </v-col>
@@ -111,6 +111,25 @@
 export default {
   name: "Ticket",
   props: ["timeSlot", "movieName", "theater", "selectedSeat"],
+
+  methods: {
+    padTo2Digits(num) {
+      return num.toString().padStart(2, "0");
+    },
+    formatTime(date) {
+      return (
+        this.padTo2Digits(date.getHours()) +
+        ":" +
+        this.padTo2Digits(date.getMinutes())
+      );
+    },
+    formatDate(date) {
+      let ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(date);
+      let mo = new Intl.DateTimeFormat("en", { month: "short" }).format(date);
+      let da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(date);
+      return `${da} ${mo} ${ye}`;
+    },
+  },
 };
 </script>
 

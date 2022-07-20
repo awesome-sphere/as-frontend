@@ -6,7 +6,10 @@ module.exports = {
     https: false,
     proxy: {
       "/seating": {
-        target: "http://127.0.0.1:9000",
+        target: "http://127.0.0.1:9004",
+      },
+      "/booking": {
+        target: "http://127.0.0.1:9009",
       },
       "/movie": {
         target: "http://127.0.0.1:9002",

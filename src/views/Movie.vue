@@ -19,7 +19,11 @@
         </v-stepper-header>
         <v-stepper-items>
           <v-stepper-content step="1">
-            <show-time @selectTimeSlot="getSelectedTimeSlot"></show-time>
+            <show-time
+              @selectTimeSlot="getSelectedTimeSlot"
+              :date-slots="dateSlot"
+              :time-slots="timeSlotList"
+            ></show-time>
           </v-stepper-content>
           <v-stepper-content step="2">
             <booking
@@ -112,19 +116,25 @@ import ShowTime from "@/components/ShowTime";
 import Booking from "@/components/Booking";
 import Payment from "@/components/Payment";
 import Ticket from "../components/Ticket.vue";
+import Vue from "vue";
 
 export default {
   name: "Movie",
   components: { ShowTime, Booking, Payment, Ticket },
   data() {
     return {
-      e1: 1,
+      e1: 4,
       movieName: "Thor: Love and Thunder",
       theater: 1,
       timeSlot: "13:00",
       selectedSeat: [],
       alertToggle: false,
+      dateSlot: [],
+      timeSlotList: [],
     };
+  },
+  created() {
+    this.getTimeSlot();
   },
   watch: {
     alertToggle(newVal) {
@@ -147,12 +157,25 @@ export default {
         this.e1 -= 1;
       }
     },
+    async getTimeSlot() {
+      let result = await Vue.axios.post("/booking/get-time-slots", {
+        movie_id: parseInt(this.$route.params.id),
+      });
+      this.dateSlot = result.data.date_slot || [];
+      for (let i = 0; i < this.dateSlot.length; i++) {
+        this.dateSlot[i] = new Date(this.dateSlot[i]);
+      }
+      this.dateSlot = this.dateSlot.sort((a, b) => Number(a) - Number(b));
+      this.timeSlotList = result.data.time_slots || [];
+      for (let i = 0; i < this.timeSlotList.length; i++) {
+        this.timeSlotList[i].time = new Date(this.timeSlotList[i].time);
+      }
+    },
     getSelectedSeat(selectedSeatData) {
       if (selectedSeatData.length !== 0) {
         this.selectedSeat = selectedSeatData;
         this.nextStep();
       } else {
-        console.log("pass");
         this.alertToggle = true;
       }
     },
