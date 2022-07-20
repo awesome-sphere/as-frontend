@@ -5,6 +5,7 @@
       tile
       width="80%"
       class="mx-auto justify-center text-center"
+      style="z-index: 4"
       color="#8a9a9f"
     >
       <v-card-title class="mx-auto text-h4 text--primary justify-center">
@@ -15,6 +16,7 @@
       border-variant="dark"
       class="mx-auto justify-center"
       width="80%"
+      style="z-index: 4"
       color="transparent"
     >
       <v-tabs

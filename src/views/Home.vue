@@ -6,12 +6,12 @@
       <v-col cols="7" align-self="center" class="mx-auto">
         <div class="content">
           <div class="text-box">
-            <h2>
+            <h2 style="z-index: 4">
               It's not just a Movie
               <br />
-              It's <span>AS Cinema</span>
+              It's <span style="z-index: 4">AS Cinema</span>
             </h2>
-            <p>
+            <p style="z-index: 4">
               Joining 40 years on the path of family entertainment business that
               intends to bring happiness to family and friends in Asia as a
               movie distributor, we have been in the cinema business for a very
@@ -21,7 +21,14 @@
             </p>
           </div>
         </div>
-        <v-btn rounded elevation="0" color="#175769" dark to="/all-movies">
+        <v-btn
+          style="z-index: 4"
+          rounded
+          elevation="0"
+          color="#175769"
+          dark
+          to="/all-movies"
+        >
           <v-icon class="mr-1">mdi-movie-filter</v-icon>
           See Movies
         </v-btn>

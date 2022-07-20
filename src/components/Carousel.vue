@@ -5,6 +5,7 @@
     hide-delimiter-background
     show-arrows-on-hover
     hide-delimiters
+    style="z-index: 4"
   >
     <v-carousel-item
       class="mx-auto"

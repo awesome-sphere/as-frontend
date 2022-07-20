@@ -37,6 +37,7 @@
                 class="justify-center"
                 plain
                 icon
+                style="z-index: 4"
                 :disabled="disableButton(seat.status)"
               >
                 <v-icon
@@ -179,6 +180,7 @@
               class="ml-auto"
               rounded
               elevation="0"
+              style="z-index: 4"
               @click="submitSelectedSeat"
               >Confirm</v-btn
             >
