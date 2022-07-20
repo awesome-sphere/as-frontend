@@ -124,7 +124,7 @@ export default {
           timeSlotForTheater.push(timeSlotDate);
         }
       }
-      return timeSlotForTheater;
+      return timeSlotForTheater.sort((a, b) => Number(a) - Number(b));
     },
     selectTimeSlot(id, time) {
       const timeSlot = { theaterID: id, time: time };
