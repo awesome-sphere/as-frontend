@@ -112,6 +112,7 @@ export default {
         date1.getYear() === date2.getYear()
       );
     },
+    // TODO: Fix me
     getTimeSlotByTheater(theaterId, date) {
       let timeSlotForTheater = [];
       for (let i = 0; i < this.timeSlots.length; i++) {

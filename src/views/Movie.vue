@@ -123,10 +123,10 @@ export default {
   components: { ShowTime, Booking, Payment, Ticket },
   data() {
     return {
-      e1: 4,
+      e1: 1,
       movieName: "Thor: Love and Thunder",
-      theater: 1,
-      timeSlot: "13:00",
+      theater: null,
+      timeSlot: null,
       selectedSeat: [],
       alertToggle: false,
       dateSlot: [],

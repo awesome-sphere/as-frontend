@@ -84,10 +84,11 @@
           </v-row>
         </v-card>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="4">
         <v-card
           color="rgba(23, 87, 105,0.15)"
           elevation="0"
+          max-width="325"
           outlined
           class="pa-5"
         >
@@ -119,9 +120,11 @@
             </v-chip>
           </div>
           <div class="mb-3">
-            <span style="font-weight: bold" class="mr-1">Time slot:</span>
+            <span style="font-weight: bold" class="mr-1"
+              >Theater {{ theater || "N/A" }}:</span
+            >
             <v-chip color="rgba(11, 181, 147,0.7)" class="ma-2">
-              Theater {{ theater }} - {{ timeSlot || "N/A" }}
+              {{ formatDate(timeSlot) || "N/A" }}
             </v-chip>
           </div>
           <v-card class="mx-auto" max-width="170" elevation="0">
@@ -225,6 +228,25 @@ export default {
   },
 
   methods: {
+    padTo2Digits(num) {
+      return num.toString().padStart(2, "0");
+    },
+    formatTime(date) {
+      return (
+        this.padTo2Digits(date.getHours()) +
+        ":" +
+        this.padTo2Digits(date.getMinutes())
+      );
+    },
+    formatDate(date) {
+      if (date === null) {
+        return null;
+      }
+      let ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(date);
+      let mo = new Intl.DateTimeFormat("en", { month: "short" }).format(date);
+      let da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(date);
+      return `${da} ${mo} ${ye}, ${this.formatTime(date)}`;
+    },
     isSelectedSeat(seatID, seatListType) {
       let seatLists =
         seatListType === "normal"
