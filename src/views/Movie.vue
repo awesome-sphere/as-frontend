@@ -144,6 +144,9 @@ export default {
     this.getMovieDetail();
     this.getTimeSlot();
   },
+  beforeDestroy() {
+    this.cancelOrder();
+  },
   watch: {
     alertToggle(newVal) {
       if (newVal) {
@@ -164,6 +167,29 @@ export default {
       if (this.e1 > 1) {
         this.e1 -= 1;
       }
+    },
+    async cancelOrder() {
+      let config = {
+        headers: {
+          Authorization: store.state.webToken,
+        },
+      };
+      await Vue.axios
+        .post(
+          "/payment/cancel-order",
+          {
+            theater_id: this.theater,
+            seat_id: this.selectedSeat,
+            time_slot_id: this.timeSlotId,
+          },
+          config
+        )
+        .catch(() => {
+          this.errorMessage =
+            "Server is currently down. Please please for a moment";
+          this.alertToggle = true;
+          this.loadingPayment = false;
+        });
     },
     async submitPayment() {
       if (store.state.webToken === "") {
