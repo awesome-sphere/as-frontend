@@ -14,6 +14,7 @@
                 creditDialog = !creditDialog;
                 mobileBankingDialog = false;
               "
+              style="z-index: 4"
               class="mx-5 my-1"
               outlined
               color="#225A6B"
@@ -28,6 +29,7 @@
                 creditDialog = false;
                 mobileBankingDialog = !mobileBankingDialog;
               "
+              style="z-index: 4"
               class="mx-5 my-1"
               outlined
               color="#225A6B"
@@ -67,6 +69,18 @@
           />
         </v-card>
       </v-card>
+      <v-card-actions>
+        <v-btn
+          color="#175769"
+          class="ml-auto mr-2"
+          rounded
+          dark
+          elevation="0"
+          style="z-index: 4"
+          @click="submitPayment()"
+          >Confirm</v-btn
+        >
+      </v-card-actions>
     </v-card>
   </v-container>
 </template>
@@ -83,6 +97,12 @@ export default {
     mobileBankingDialog: false,
     mobileBanking: false,
   }),
+
+  methods: {
+    submitPayment() {
+      this.$emit("sendPayment", true);
+    },
+  },
 };
 </script>
 

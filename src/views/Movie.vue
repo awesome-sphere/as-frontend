@@ -36,7 +36,7 @@
             ></booking>
           </v-stepper-content>
           <v-stepper-content step="3">
-            <payment></payment>
+            <payment @sendPayment="submitPayment"></payment>
           </v-stepper-content>
           <v-stepper-content step="4">
             <v-col align="center" justify="center">
@@ -119,6 +119,7 @@ import Booking from "@/components/Booking";
 import Payment from "@/components/Payment";
 import Ticket from "../components/Ticket.vue";
 import Vue from "vue";
+import store from "@/store";
 
 export default {
   name: "Movie",
@@ -136,6 +137,7 @@ export default {
       timeSlotList: [],
       errorMessage: "",
       loadingTimeSlot: false,
+      loadingPayment: false,
     };
   },
   created() {
@@ -163,9 +165,46 @@ export default {
         this.e1 -= 1;
       }
     },
+    async submitPayment() {
+      if (store.state.webToken === "") {
+        this.errorMessage = "Please login before making payment";
+        this.alertToggle = true;
+      } else {
+        this.loadingPayment = true;
+        let config = {
+          headers: {
+            Authorization: store.state.webToken,
+          },
+        };
+        let result = await Vue.axios
+          .post(
+            "/payment/pay",
+            {
+              theater_id: this.theater,
+              seat_id: this.selectedSeat,
+              time_slot_id: this.timeSlotId,
+            },
+            config
+          )
+          .catch(() => {
+            this.errorMessage =
+              "Server is currently down. Please please for a moment";
+            this.alertToggle = true;
+            this.loadingPayment = false;
+          });
+        let messageFromBackend = result.data.message || result.data.error;
+        if (messageFromBackend !== undefined) {
+          this.errorMessage = messageFromBackend;
+          this.alertToggle = true;
+        } else {
+          this.nextStep();
+        }
+        this.loadingPayment = false;
+      }
+    },
     async getMovieDetail() {
       let result = await Vue.axios.get(
-          "/movie/get-movie/" + this.$route.params.id
+        "/movie/get-movie/" + this.$route.params.id
       );
       this.movieName = result.data.movie.title;
     },

@@ -17,6 +17,9 @@ module.exports = {
       "/authen": {
         target: "http://127.0.0.1:9001",
       },
+      "/payment": {
+        target: "http://127.0.0.1:9003",
+      },
     },
     headers: {
       "Access-Control-Allow-Origin": "*",
