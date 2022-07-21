@@ -36,7 +36,10 @@
             ></booking>
           </v-stepper-content>
           <v-stepper-content step="3">
-            <payment @sendPayment="submitPayment"></payment>
+            <payment
+              :loading="loadingPayment"
+              @sendPayment="submitPayment"
+            ></payment>
           </v-stepper-content>
           <v-stepper-content step="4">
             <v-col align="center" justify="center">

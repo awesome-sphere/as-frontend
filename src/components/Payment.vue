@@ -1,6 +1,20 @@
 <template>
   <v-container class="mx-auto" max-width="300">
-    <v-card class="mx-auto" outlined max-width="800">
+    <v-row v-if="loading" align="center" justify="center">
+      <v-col align-self="center">
+        <v-row v-if="loading" align="center" justify="center">
+          <v-progress-circular
+            color="#8a9a9f"
+            indeterminate
+            class="my-16 mx-auto"
+          ></v-progress-circular>
+        </v-row>
+        <p class="text-center font-weight-bold">
+          We are submitting your payment. Please stand by...
+        </p>
+      </v-col>
+    </v-row>
+    <v-card v-if="!loading" class="mx-auto" outlined max-width="800">
       <v-card-title>Payment</v-card-title>
       <v-card-subtitle>Price: 400 Baht</v-card-subtitle>
       <v-card flat>
@@ -90,6 +104,7 @@ import CreditCardInfo from "./CreditCardInfo";
 
 export default {
   components: { CreditCardInfo },
+  props: ["loading"],
   data: () => ({
     credit: false,
     cardNumber: "",
