@@ -24,7 +24,7 @@
     </v-card-actions>
     <v-card-actions v-else>
       <v-btn plain rounded color="#FFAB00" @click="login"> Login </v-btn>
-      <v-btn plain rounded color="#FFAB00"> Sign Up </v-btn>
+      <v-btn plain rounded color="#FFAB00" to="/signup"> Sign Up </v-btn>
     </v-card-actions>
   </v-card>
 </template>

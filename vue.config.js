@@ -6,19 +6,19 @@ module.exports = {
     https: false,
     proxy: {
       "/seating": {
-        target: "http://127.0.0.1:9004",
+        target: "http://as-seating:9004",
       },
       "/booking": {
-        target: "http://127.0.0.1:9009",
+        target: "http://as-booking-svc:9009",
       },
       "/movie": {
-        target: "http://127.0.0.1:9002",
+        target: "http://as-general-svc:9002",
       },
       "/authen": {
-        target: "http://127.0.0.1:9001",
+        target: "http://as-authentication-svc:9001",
       },
       "/payment": {
-        target: "http://127.0.0.1:9003",
+        target: "http://as-payment-svc:9003",
       },
     },
     headers: {
