@@ -20,7 +20,7 @@
 
       <v-tabs color="#FFD54F" dark right optional>
         <v-tab to="/all-movies">Movies</v-tab>
-        <v-tab to="/about">About</v-tab>
+        <v-tab v-if="isLoggedIn" to="/history">History</v-tab>
       </v-tabs>
       <v-menu bottom min-width="200px" open-on-hover offset-y right offset-x>
         <template v-slot:activator="{ on }">
