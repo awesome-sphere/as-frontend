@@ -1,6 +1,20 @@
 <template>
   <v-container>
-    <v-row class="justify-center">
+    <v-row v-if="loadingSubmit" align="center" justify="center">
+      <v-col align-self="center">
+        <v-row v-if="loadingSubmit" align="center" justify="center">
+          <v-progress-circular
+            color="#8a9a9f"
+            indeterminate
+            class="my-16 mx-auto"
+          ></v-progress-circular>
+        </v-row>
+        <p class="text-center font-weight-bold">
+          We are submitting your order. Please stand by...
+        </p>
+      </v-col>
+    </v-row>
+    <v-row class="justify-center" v-if="!loadingSubmit">
       <v-col cols="7">
         <v-row class="justify-center mb-5">
           <v-col v-for="(seatType, i) in seatTypes" :key="i" cols="6">
@@ -26,7 +40,26 @@
               </v-row>
             </template>
           </v-img>
-          <v-row class="justify-center mt-1">
+          <v-row v-if="loading" align="center" justify="center">
+            <v-progress-circular
+              color="#8a9a9f"
+              indeterminate
+              class="my-16"
+            ></v-progress-circular>
+          </v-row>
+          <v-row
+            v-if="
+              !loading && normalSeats.length === 0 && premiumSeats.length === 0
+            "
+            align="center"
+            justify="center"
+          >
+            <p class="mt-10 font-weight-bold">No seat for this time slot</p>
+          </v-row>
+          <v-row
+            v-if="!loading && normalSeats.length !== 0"
+            class="justify-center mt-1"
+          >
             <v-col
               class="pa-0"
               v-for="seat in normalSeats"
@@ -55,7 +88,10 @@
               </v-btn>
             </v-col>
           </v-row>
-          <v-row class="justify-center mt-8">
+          <v-row
+            v-if="!loading && premiumSeats.length !== 0"
+            class="justify-center mt-8"
+          >
             <v-col
               class="pa-0"
               v-for="seat in premiumSeats"
@@ -193,15 +229,21 @@
 
 <script>
 import store from "@/store";
+import Vue from "vue";
 
 export default {
   name: "Booking",
-  props: ["timeSlot", "movieName", "theater"],
+  props: ["timeSlot", "timeSlotId", "movieName", "theater"],
+
   data() {
     return {
       username: "",
       email: "",
       price: 0,
+      oldTimeSlotId: 0,
+      oldTheaterId: 0,
+      loading: false,
+      loadingSubmit: false,
       normalSeats: [],
       premiumSeats: [],
       selectedNormalSeat: [],
@@ -223,10 +265,20 @@ export default {
     };
   },
 
+  updated() {
+    if (
+      this.oldTheaterId !== this.theater &&
+      this.oldTimeSlotId !== this.timeSlotId
+    ) {
+      this.getAllSeats();
+    }
+    this.oldTimeSlotId = this.theater;
+    this.oldTimeSlotId = this.timeSlotId;
+  },
+
   created() {
     this.username = store.state.username || "Guest";
     this.email = store.state.email || "Please login";
-    this.getAllSeats();
   },
 
   methods: {
@@ -287,31 +339,73 @@ export default {
       }
       this.calculatePrice();
     },
-    submitSelectedSeat() {
-      this.$emit(
-        "submitSelectedSeat",
-        this.selectedNormalSeat.concat(this.selectedPremiumSeat)
-      );
+    updateSeatOutput(seat, is_error, error_message) {
+      this.$emit("submitSelectedSeat", {
+        selected_seat: seat,
+        is_error: is_error,
+        error_message: error_message,
+      });
+    },
+    async submitSelectedSeat() {
+      if (store.state.webToken === "") {
+        this.updateSeatOutput([], true, "Please login before making order");
+      } else {
+        console.log(store.state.webToken);
+        this.loadingSubmit = true;
+        let config = {
+          headers: {
+            Authorization: store.state.webToken,
+          },
+        };
+        let result = await Vue.axios
+          .post(
+            "/booking/book-seat",
+            {
+              theater_id: this.theater,
+              seat_id: this.selectedNormalSeat.concat(this.selectedPremiumSeat),
+              time_slot_id: this.timeSlotId,
+            },
+            config
+          )
+          .catch((error) => {
+            this.updateSeatOutput([], true, error.response);
+            this.loadingSubmit = false;
+          });
+        let messageFromBackend = result.data.message || result.data.error;
+        if (messageFromBackend !== undefined) {
+          this.updateSeatOutput([], true, messageFromBackend);
+        } else {
+          this.updateSeatOutput(
+            this.selectedNormalSeat.concat(this.selectedPremiumSeat),
+            false,
+            messageFromBackend
+          );
+        }
+      }
     },
     async getAllSeats() {
-      // let result = await Vue.axios.post("/seating/get-all-seats", {
-      //   theater_id: 2,
-      //   timeSlot_id: 2,
-      // });
-      // this.seats = result.data.seats_info;
-      // Mock for now
-      for (let i = 1; i <= 60; i++) {
-        this.normalSeats.push({
-          id: i,
-          status: Math.floor(Math.random() * 11) > 6 ? "AVAILABLE" : "BOOKED",
-        });
+      this.loading = true;
+      let result = await Vue.axios.post("/seating/get-all-seats", {
+        theater_id: this.theater,
+        time_slot_id: this.timeSlotId,
+      });
+      this.normalSeats = [];
+      this.premiumSeats = [];
+      let rawSeats = result.data.seats_info;
+      for (let i = 0; i < rawSeats.length; i++) {
+        if (rawSeats[i].seat_id <= 40) {
+          this.normalSeats.push({
+            id: rawSeats[i].seat_id,
+            status: rawSeats[i].status,
+          });
+        } else {
+          this.premiumSeats.push({
+            id: rawSeats[i].seat_id,
+            status: rawSeats[i].status,
+          });
+        }
       }
-      for (let i = 65; i <= 75; i++) {
-        this.premiumSeats.push({
-          id: i,
-          status: Math.floor(Math.random() * 11) > 6 ? "AVAILABLE" : "BOOKED",
-        });
-      }
+      this.loading = false;
     },
 
     getSeatColor(status, seatType) {

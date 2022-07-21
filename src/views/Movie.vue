@@ -31,6 +31,7 @@
               :movieName="movieName"
               :theater="theater"
               :timeSlot="timeSlot"
+              :time-slot-id="timeSlotId"
               @submitSelectedSeat="getSelectedSeat"
             ></booking>
           </v-stepper-content>
@@ -63,7 +64,7 @@
       right
       elevation="1"
     >
-      Please select at least one seat
+      {{ errorMessage }}
     </v-snackbar>
     <v-row class="justify-end">
       <v-btn
@@ -128,10 +129,12 @@ export default {
       movieName: "Thor: Love and Thunder",
       theater: null,
       timeSlot: null,
+      timeSlotId: 0,
       selectedSeat: [],
       alertToggle: false,
       dateSlot: [],
       timeSlotList: [],
+      errorMessage: "",
       loadingTimeSlot: false,
     };
   },
@@ -143,7 +146,7 @@ export default {
       if (newVal) {
         setTimeout(() => {
           this.alertToggle = false;
-        }, 4000);
+        }, 6000);
       }
     },
   },
@@ -173,19 +176,26 @@ export default {
       for (let i = 0; i < this.timeSlotList.length; i++) {
         this.timeSlotList[i].time = new Date(this.timeSlotList[i].time);
       }
-      this.loadingTimeSlot = false
+      this.loadingTimeSlot = false;
     },
     getSelectedSeat(selectedSeatData) {
-      if (selectedSeatData.length !== 0) {
-        this.selectedSeat = selectedSeatData;
-        this.nextStep();
+      if (!selectedSeatData.is_error) {
+        if (selectedSeatData.selected_seat.length !== 0) {
+          this.selectedSeat = selectedSeatData.selected_seat;
+          this.nextStep();
+        } else {
+          this.alertToggle = true;
+          this.errorMessage = "Please select at least one seat";
+        }
       } else {
         this.alertToggle = true;
+        this.errorMessage = selectedSeatData.error_message;
       }
     },
     getSelectedTimeSlot(timeSlot) {
       this.theater = timeSlot.theaterID;
       this.timeSlot = timeSlot.time;
+      this.timeSlotId = timeSlot.time_slot_id;
       this.nextStep();
     },
   },

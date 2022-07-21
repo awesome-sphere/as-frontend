@@ -63,7 +63,7 @@
                     :key="i"
                   >
                     <v-chip @click="selectTimeSlot(th, t)">
-                      {{ formatTime(t) }}
+                      {{ formatTime(t.time) }}
                     </v-chip>
                   </v-col>
                 </v-row>
@@ -122,7 +122,6 @@ export default {
         date1.getYear() === date2.getYear()
       );
     },
-    // TODO: Fix me
     getTimeSlotByTheater(theaterId, date) {
       let timeSlotForTheater = [];
       for (let i = 0; i < this.timeSlots.length; i++) {
@@ -131,13 +130,17 @@ export default {
           this.timeSlots[i].theater_id === theaterId &&
           this.checkDate(timeSlotDate, date)
         ) {
-          timeSlotForTheater.push(timeSlotDate);
+          timeSlotForTheater.push(this.timeSlots[i]);
         }
       }
       return timeSlotForTheater.sort((a, b) => Number(a) - Number(b));
     },
     selectTimeSlot(id, time) {
-      const timeSlot = { theaterID: id, time: time };
+      const timeSlot = {
+        theaterID: id,
+        time: time.time,
+        time_slot_id: time.id,
+      };
       this.$emit("selectTimeSlot", timeSlot);
     },
   },
