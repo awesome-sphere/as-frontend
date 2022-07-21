@@ -117,6 +117,9 @@ export default {
       return num.toString().padStart(2, "0");
     },
     formatTime(date) {
+      if (date === null || date === "") {
+        return "N/A";
+      }
       return (
         this.padTo2Digits(date.getHours()) +
         ":" +
@@ -124,6 +127,9 @@ export default {
       );
     },
     formatDate(date) {
+      if (date === null){
+        return ""
+      }
       let ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(date);
       let mo = new Intl.DateTimeFormat("en", { month: "short" }).format(date);
       let da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(date);
