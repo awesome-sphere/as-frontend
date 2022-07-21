@@ -49,6 +49,7 @@
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
               :type="showPassword ? 'text' : 'password'"
               @click:append="showPassword = !showPassword"
+              @keydown.enter="login"
             ></v-text-field>
           </v-row>
           <v-row v-if="isSignUp" class="mb-1">
@@ -65,6 +66,7 @@
               :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
               :type="showConfirmPassword ? 'text' : 'password'"
               @click:append="showConfirmPassword = !showConfirmPassword"
+              @keydown.enter="login"
             ></v-text-field>
           </v-row>
         </v-form>
