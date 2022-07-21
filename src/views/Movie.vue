@@ -23,6 +23,7 @@
               @selectTimeSlot="getSelectedTimeSlot"
               :date-slots="dateSlot"
               :time-slots="timeSlotList"
+              :loading="loadingTimeSlot"
             ></show-time>
           </v-stepper-content>
           <v-stepper-content step="2">
@@ -131,6 +132,7 @@ export default {
       alertToggle: false,
       dateSlot: [],
       timeSlotList: [],
+      loadingTimeSlot: false,
     };
   },
   created() {
@@ -158,6 +160,7 @@ export default {
       }
     },
     async getTimeSlot() {
+      this.loadingTimeSlot = true;
       let result = await Vue.axios.post("/booking/get-time-slots", {
         movie_id: parseInt(this.$route.params.id),
       });
@@ -170,6 +173,7 @@ export default {
       for (let i = 0; i < this.timeSlotList.length; i++) {
         this.timeSlotList[i].time = new Date(this.timeSlotList[i].time);
       }
+      this.loadingTimeSlot = false
     },
     getSelectedSeat(selectedSeatData) {
       if (selectedSeatData.length !== 0) {

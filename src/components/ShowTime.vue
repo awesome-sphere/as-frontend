@@ -16,10 +16,19 @@
       border-variant="dark"
       class="mx-auto justify-center"
       width="80%"
+      min-height="200"
       style="z-index: 4"
       color="transparent"
     >
+      <v-row v-if="loading" align="center" justify="center">
+        <v-progress-circular
+          color="#8a9a9f"
+          indeterminate
+          class="my-16"
+        ></v-progress-circular>
+      </v-row>
       <v-tabs
+        v-if="!loading"
         v-model="selectedDate"
         background-color="transparent"
         color="basil"
@@ -29,7 +38,6 @@
           {{ formatDate(item) }}
         </v-tab>
         <v-tab-item v-for="(dateSlot, i) in dateSlots" :key="i">
-          <!-- TODO: styling and set up language -->
           <v-chip-group active-class="yellow lighten-2 black--text" column>
             <v-container v-for="(th, i) in theaters" :key="i">
               <v-list-item six-line>
@@ -76,7 +84,7 @@
 <script>
 export default {
   name: "ShowTime",
-  props: ["dateSlots", "timeSlots"],
+  props: ["dateSlots", "timeSlots", "loading"],
   data() {
     return {
       selectedDate: null,
