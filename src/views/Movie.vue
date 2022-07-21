@@ -93,17 +93,7 @@
         Previous
       </v-btn>
       <v-btn
-        v-if="e1 !== 4"
-        dark
-        rounded
-        color="#175769"
-        elevation="0"
-        @click="nextStep"
-      >
-        Next
-      </v-btn>
-      <v-btn
-        v-else
+        v-if="e1 === 4"
         dark
         rounded
         color="#175769"
