@@ -77,6 +77,7 @@
           color="#225A6B"
           dark
           @click="login"
+          @keydown.enter="login"
           >{{ isSignUp ? "Signup" : "Login" }}</v-btn
         >
         <v-spacer></v-spacer>
