@@ -253,13 +253,13 @@ export default {
           icon: "mdi-seat",
           name: "Executive",
           color: "blue",
-          price: 400,
+          price: 200,
         },
         {
           icon: "mdi-sofa-single",
           name: "First class",
           color: "red",
-          price: 1000,
+          price: 450,
         },
       ],
     };
