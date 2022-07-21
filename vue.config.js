@@ -6,7 +6,7 @@ module.exports = {
     https: false,
     proxy: {
       "/seating": {
-        target: "http://as-seating:9004",
+        target: "http://as-seating-svc:9004",
       },
       "/booking": {
         target: "http://as-booking-svc:9009",
