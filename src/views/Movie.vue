@@ -126,7 +126,7 @@ export default {
   data() {
     return {
       e1: 1,
-      movieName: "Thor: Love and Thunder",
+      movieName: "N/A",
       theater: null,
       timeSlot: null,
       timeSlotId: 0,
@@ -139,6 +139,7 @@ export default {
     };
   },
   created() {
+    this.getMovieDetail();
     this.getTimeSlot();
   },
   watch: {
@@ -161,6 +162,12 @@ export default {
       if (this.e1 > 1) {
         this.e1 -= 1;
       }
+    },
+    async getMovieDetail() {
+      let result = await Vue.axios.get(
+          "/movie/get-movie/" + this.$route.params.id
+      );
+      this.movieName = result.data.movie.title;
     },
     async getTimeSlot() {
       this.loadingTimeSlot = true;

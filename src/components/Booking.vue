@@ -350,7 +350,6 @@ export default {
       if (store.state.webToken === "") {
         this.updateSeatOutput([], true, "Please login before making order");
       } else {
-        console.log(store.state.webToken);
         this.loadingSubmit = true;
         let config = {
           headers: {
