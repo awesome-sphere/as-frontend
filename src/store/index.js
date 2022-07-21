@@ -28,7 +28,7 @@ export default new Vuex.Store({
       state.isLoggedIn = isLoggedIn;
     },
     setWebToken(state, webToken) {
-      state.webToken = webToken;
+      state.webToken = "Bearer " + webToken;
     },
     setIsAdmin(state, isAdmin) {
       state.isAdmin = isAdmin;
