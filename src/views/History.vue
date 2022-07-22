@@ -7,7 +7,7 @@
       <v-data-table
         v-show="!loading"
         :headers="headers"
-        :items="desserts"
+        :items="history"
         :items-per-page="5"
         class="elevation-1"
       ></v-data-table>
