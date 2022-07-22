@@ -60,7 +60,7 @@ export default {
         },
       };
       let result = await Vue.axios.get("/authen/get-hist", config);
-      this.history = result.data.history;
+      this.history = result.data.history.map((hist) => hist.booking);
       this.loading = false;
     },
   },
